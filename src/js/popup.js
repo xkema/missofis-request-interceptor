@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#chk-toggle-interceptor').checked = appState.interceptorStatus;      
     document.querySelector('#chk-use-placeholders').checked = appState.placeholdersStatus;
     // show form after popup data ready
-    document.querySelector('#ntrcptr-wrapper').style.display = 'block';
+    document.querySelector('#ntrcptr-form').style.display = 'block';
   });
 });
 

@@ -1,3 +1,24 @@
+/*
+  --------------
+  general styles
+  --------------
+*/
+
+/* form labels */
+.form-label + .ntrcptr-label {
+  margin-bottom: 4px;
+}
+
+.form-label + .ntrcptr-label .label {
+  white-space: normal;
+}
+
+/*
+  ------------
+  popup styles
+  ------------
+*/
+
 /* header styles */
 #ntrcptr-header {
   border-bottom: 3px double #f4f4f4;
@@ -14,10 +35,29 @@
 }
 
 #ntrcptr-form {
-
+  display: none;
 }
 
 /* footer styles */
 #ntrcptr-footer {
   background: #f4f4f4;
+}
+
+/*
+  -------------------
+  options page styles
+  -------------------
+*/
+
+/* content styles */
+#ntrcptr-options-wrapper {
+  min-width: 240px;
+}
+
+#ntrcptr-options-form {
+  display: none;
+}
+
+#ntrcptr-options-form-errors {
+  
 }

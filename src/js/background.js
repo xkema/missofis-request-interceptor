@@ -3,7 +3,8 @@ import {Utils} from './utils.js';
 // set a local state object for toggler button statuses (local to this file)
 let appState = {
   interceptorStatus: false,
-  placeholdersStatus: false
+  placeholdersStatus: false,
+  redirects: []
 };
 
 // read data at extension startup
@@ -20,14 +21,28 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 
 // listen network requests
 chrome.webRequest.onBeforeRequest.addListener(function(details) {
-  // console.log('CHROME REQUEST DETAILS :: ', details);
-  console.log('IN REQUEST :: ', appState);  
+  if(appState.interceptorStatus) {
+    // console.log('__INTERCEPTOR_ON__', details.url.substr(0, 40)+'..', appState.redirects);
+    let capturedInterception = appState.redirects.filter((redirect) => {
+      return -1 !== details.url.search(redirect.redirectUrl)
+    });
+    if(0 !== capturedInterception.length) {
+      let blockingResponse = {
+        redirectUrl: details.url.replace(capturedInterception[0].redirectUrl, capturedInterception[0].requestUrl)
+      };
+      console.log('INTERCEPTED REQUEST ::', details.url + ' ==> ', blockingResponse.redirectUrl);
+      return blockingResponse;
+    }
+  } else {
+    // console.log('__INTERCEPTOR_OFF__', details.url.substr(0, 40)+'..');
+  }
 }, {
   urls: ['<all_urls>']
 }, ['blocking']);
 
 /*
-if(utils.interceptorState.interceptorEnabled) {
+// old static implementation
+if(utils.interceptorStatus.interceptorEnabled) {
   let blockingResponse = {};
   if (-1 !== details.url.search(/dygassets\.dygdigital\.com|img-dygassets\.mncdn\.com|dygassets\.akamaized\.net/g)) {
     blockingResponse.redirectUrl = details.url.replace(/dygassets\.dygdigital\.com|img-dygassets\.mncdn\.com|dygassets\.akamaized\.net/g, 'localhost:3000');
@@ -44,3 +59,4 @@ if(utils.interceptorState.interceptorEnabled) {
   }
 }
 */
+
