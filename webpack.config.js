@@ -4,11 +4,13 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CommonsChunkPlugin = require('./node_modules/webpack/lib/optimize/CommonsChunkPlugin.js');
 
-// define settings
+// define common chunks settings
 const commonChunks = new CommonsChunkPlugin({
   name: 'utils',
   filename: 'utils.js'
 });
+
+// file copy ops
 const copyAssets = new CopyWebpackPlugin([
   {from: './src/templates/_options.html', to: '../pages/options.html'},
   {from: './src/templates/_popup.html', to: '../pages/popup.html'},
@@ -17,12 +19,13 @@ const copyAssets = new CopyWebpackPlugin([
   {from: './src/manifest.json', to: '../manifest.json'}
 ]);
 
-// define config
+// webpack config
 const config = {
   entry: {
     background: './src/js/background.js',
     popup: './src/js/popup.js',
-    options: './src/js/options.js'
+    options: './src/js/options.js',
+    utils: './src/js/utils.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist', 'js'),

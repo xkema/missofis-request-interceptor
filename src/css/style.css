@@ -1,1 +1,23 @@
-/* style.css */
+/* header styles */
+#ntrcptr-header {
+  border-bottom: 3px double #f4f4f4;
+}
+
+#ntrcptr-header h1 {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+/* content styles */
+#ntrcptr-wrapper {
+  min-width: 240px;
+}
+
+#ntrcptr-form {
+
+}
+
+/* footer styles */
+#ntrcptr-footer {
+  background: #f4f4f4;
+}
