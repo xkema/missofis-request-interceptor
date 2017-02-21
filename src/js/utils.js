@@ -88,8 +88,8 @@ class Utils {
         hasParserError = true;
       }
       return {
-        requestUrl: redirectPartials[0],
-        redirectUrl: redirectPartials[1]
+        redirectUrl: redirectPartials[0],   // string to be replaced with `requestUrl`
+        requestUrl: redirectPartials[1]     // url to be requested
       };
     });
     if(hasParserError) {

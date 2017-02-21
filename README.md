@@ -26,3 +26,4 @@ todo
 - adblocker checker
 - change <all_urls> permission form onBeforeRequest handler
 - add # comment support to redirect inputs form input
+- update syntax with: https://en.wikipedia.org/wiki/Hosts_(file)#File_content

@@ -24,13 +24,13 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
   if(appState.interceptorStatus) {
     // console.log('__INTERCEPTOR_ON__', details.url.substr(0, 40)+'..', appState.redirects);
     let capturedInterception = appState.redirects.filter((redirect) => {
-      return -1 !== details.url.search(redirect.redirectUrl)
+      return -1 !== details.url.search(redirect.requestUrl)
     });
     if(0 !== capturedInterception.length) {
       let blockingResponse = {
-        redirectUrl: details.url.replace(capturedInterception[0].redirectUrl, capturedInterception[0].requestUrl)
+        redirectUrl: details.url.replace(capturedInterception[0].requestUrl, capturedInterception[0].redirectUrl)
       };
-      console.log('INTERCEPTED REQUEST ::', details.url + ' ==> ', blockingResponse.redirectUrl);
+      console.log('__INTERCEPTED_REQUEST__', details.url + ' ==> ', blockingResponse.redirectUrl);
       return blockingResponse;
     }
   } else {
