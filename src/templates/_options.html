@@ -16,12 +16,11 @@
             <form id="ntrcptr-options-form">
               <div class="form-group">
                 <label class="form-label" for="txt-intercepted-redirects">Itercepted URLs</label>
-                <!--
-                <div class="ntrcptr-label">
-                  <span class="label">Add a single redirection pair for each line with space(s) as seperator, eg: <br><em>localhost:3000 cdn.your-site.com</em> <br><em>cdn.your-site.com</em>s wil be replaced by <em>localhost:3000</em>s.</span>
-                </div>
-                -->
-                <textarea class="form-input" id="txt-intercepted-redirects" placeholder="Use hosts file syntax like: 127.0.0.1 localhost" rows="6"></textarea>
+                <textarea id="txt-intercepted-redirects" class="form-input" placeholder="Use hosts file syntax like &quot;127.0.0.1 localhost&quot;, localhost's will be replaced with 127.0.0.1's" rows="5"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="txt-intercepted-images">Itercepted Image URLs</label>
+                <textarea id="txt-intercepted-images" class="form-input" placeholder="Add image URL hints for placeholder replacements like &quot;my-image-cdn.com/image-folder&quot;, all requests matched with this hint will be redirected to an image placeholder service" rows="5"></textarea>
               </div>
               <div class="form-group">
                 <button id="ntrcptr-options-submit-button" class="btn btn-primary float-right" type="submit">Save</button>
