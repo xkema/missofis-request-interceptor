@@ -20,6 +20,7 @@ Extension uses spectre.css framework for styling.
 todo
 ----
 
+- protected branch test
 - https://developer.chrome.com/extensions/tut_migration_to_manifest_v2
 - http://codepen.io/mallendeo/pen/eLIiG
 - http://callmenick.com/post/css-toggle-switch-examples
