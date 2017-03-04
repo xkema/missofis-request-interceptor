@@ -21,7 +21,7 @@ class Utils {
    */
   static updateExtensionOptions(items, optionsUpdatedCallback) {
     chrome.storage.sync.set(items, function() {
-      console.log('OPTIONS UPDATED ::', items);
+      // console.log('OPTIONS UPDATED ::', items);
       if(typeof optionsUpdatedCallback !== 'undefined' && typeof optionsUpdatedCallback === 'function') {
         optionsUpdatedCallback.call(items);
       }
@@ -173,10 +173,8 @@ class Utils {
   static _findLineBreaks(text) {
     let lines = text.split(/\r|\n|\r\n/g);
     lines = lines.filter((line) => {
-      return '' !== line.trim()
-    }).map((line) => {
-      return line.trim()
-    });
+      return '' !== line.trim() && !/^(?:\s+)?#/g.test(line)
+    }).map((line) => line.trim());
     return lines;
   }
 

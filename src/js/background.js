@@ -9,21 +9,21 @@ let appState = {
 };
 
 // read data at extension startup
-Utils.readExtensionData(null, function(items) {
+Utils.readExtensionData(null, (items) => {
   Utils.updateLocalState(items, appState);
   // console.log('APP STATE ::', appState);
 });
 
 // listen to toggler button changes
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   // console.log('MESSAGE RECEIVED BY BACKGROUND :: ', message);
   sendResponse({message: 'Interceptor status updated!', data: message});
   Utils.updateLocalState(message, appState);
   Utils.updateExtensionData(message);
 });
 
-// listen network requests
-chrome.webRequest.onBeforeRequest.addListener(function(details) {
+// interceptor dirty work
+const interceptNetworkRequestHandler = (details) => {
   if(appState.interceptorStatus) {
     // console.log('__INTERCEPTOR_ON__', details.url.substr(0, 40)+'..', appState.redirectsInterceptor, appState.redirectsImageHinters);
     // get captured interceptable urls
@@ -53,6 +53,9 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
     }
   }
   // console.log('__INTERCEPTOR_OFF__', details.url.substr(0, 40)+'..');
-}, {
+};
+
+// listen network requests
+chrome.webRequest.onBeforeRequest.addListener(interceptNetworkRequestHandler, {
   urls: ['<all_urls>']
 }, ['blocking']);

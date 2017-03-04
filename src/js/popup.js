@@ -6,30 +6,39 @@ let appState = {
   placeholdersStatus: false
 };
 
-// update popup view with chrome sync data
-document.addEventListener('DOMContentLoaded', function() {
-  Utils.readExtensionData(null, function(items) {
+// get page elements
+let chkToggleInt = document.getElementById('chk-toggle-interceptor'),
+    chkUsePlh = document.getElementById('chk-use-placeholders'),
+    btnOpenOpt = document.getElementById('btn-open-options-page'),
+    frmInt = document.getElementById('ntrcptr-form');
+
+// options page initializer
+const initPopupPage = () => {
+  Utils.readExtensionData(null, (items) => {
     Utils.updateLocalState(items, appState);
     // update togglers
-    document.querySelector('#chk-toggle-interceptor').checked = appState.interceptorStatus;      
-    document.querySelector('#chk-use-placeholders').checked = appState.placeholdersStatus;
+    chkToggleInt.checked = appState.interceptorStatus;      
+    chkUsePlh.checked = appState.placeholdersStatus;
     // show form after popup data ready
-    document.querySelector('#ntrcptr-form').style.display = 'block';
-  });
-});
+    frmInt.style.display = 'block';
+  });  
+};
 
 // bind listener to toggle interceptor button
-document.querySelector('#chk-toggle-interceptor').addEventListener('change', function(event) {
+chkToggleInt.addEventListener('change', (event) => {
   Utils.sendTogglerMessage({interceptorStatus: event.target.checked});
 });
 
 // bind listener to toggle placeholders button
-document.querySelector('#chk-use-placeholders').addEventListener('change', function(event) {
+chkUsePlh.addEventListener('change', (event) => {
   Utils.sendTogglerMessage({placeholdersStatus: event.target.checked});
 });
 
 // open options page button listener
-document.querySelector('#btn-open-options-page').addEventListener('click', function(event) {
+btnOpenOpt.addEventListener('click', (event) => {
   event.preventDefault();
   chrome.runtime.openOptionsPage();
 });
+
+// update popup view with chrome sync data
+document.addEventListener('DOMContentLoaded', initPopupPage);

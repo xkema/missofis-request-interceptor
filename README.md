@@ -26,7 +26,7 @@ too many redirects?
 - [ ] http://callmenick.com/post/css-toggle-switch-examples
 - [ ] adblocker checker
 - [ ] change `<all_urls>` permission form onBeforeRequest handler
-- [ ] add # comment support to redirect inputs form input
+- [x] add # comment support to redirect inputs form input
 
 ## Credits
 
