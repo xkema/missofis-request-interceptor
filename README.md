@@ -1,30 +1,33 @@
-untitled-chrome-interceptor
-====
+# Missofis Chrome Interceptor
 
-Chrome extension to intercept chrome network requests.
+Chrome extension to intercept network requests.
 
-Development Env.
-----
+## Development Environment
 
 `npm start` or `npm run start` starts development environment with `rm -rf dist/* && webpack --watch --colors --progress` command. See **package.json** and **webpack.config.js**.
 
-Webpack watch mode creates a dist folder for each save.
+- Run `npm start` command
+- Webpack watch mode creates a **dist** folder which holds unpacked extension content on save
+- Add **dist** folder as an unpacked extension to Chrome  
 
-Add **dist** folder as an unpacked extension to Chrome.
+## Others
 
-Other
-----
+too many redirects?
 
-Extension uses spectre.css framework for styling.
+> avoid generic string matcher strings, ie. use `localhost:3000/path/to/scripts your-cdn.com/path/to/scripts` instead of `localhost:3000 your-cdn.com`  
 
-todo
-----
+## Todo
 
-- protected branch test
-- https://developer.chrome.com/extensions/tut_migration_to_manifest_v2
-- http://codepen.io/mallendeo/pen/eLIiG
-- http://callmenick.com/post/css-toggle-switch-examples
-- adblocker checker
-- change <all_urls> permission form onBeforeRequest handler
-- add # comment support to redirect inputs form input
-- update syntax with: https://en.wikipedia.org/wiki/Hosts_(file)#File_content
+- [ ] add long text input button
+- [ ] icon attribution http://identicon.org/ Missofis Chrome Interceptor
+- [ ] export options feature
+- [ ] https://developer.chrome.com/extensions/tut_migration_to_manifest_v2
+- [ ] http://codepen.io/mallendeo/pen/eLIiG
+- [ ] http://callmenick.com/post/css-toggle-switch-examples
+- [ ] adblocker checker
+- [ ] change `<all_urls>` permission form onBeforeRequest handler
+- [ ] add # comment support to redirect inputs form input
+
+## Credits
+
+Extension uses [spectre.css](https://picturepan2.github.io/spectre/) framework for styling.

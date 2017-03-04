@@ -16,7 +16,8 @@ const copyAssets = new CopyWebpackPlugin([
   {from: './src/templates/_popup.html', to: '../pages/popup.html'},
   {from: './src/css/style.css', to: '../css/style.css'},
   {from: './node_modules/spectre.css/dist/spectre.css', to: '../css/spectre.css'},
-  {from: './src/manifest.json', to: '../manifest.json'}
+  {from: './src/manifest.json', to: '../manifest.json'},
+  {from: './src/images', to: '../images'}
 ]);
 
 // webpack config
