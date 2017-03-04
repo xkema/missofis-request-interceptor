@@ -1,6 +1,7 @@
 # folders
 node_modules/
 dist/
+pack/
 
 # log files
 *.log
