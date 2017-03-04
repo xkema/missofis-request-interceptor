@@ -18,7 +18,7 @@ too many redirects?
 
 ## Todo
 
-- [ ] add long text input button
+- [x] add long text input button
 - [ ] icon attribution http://identicon.org/ Missofis Chrome Interceptor
 - [ ] export options feature
 - [ ] https://developer.chrome.com/extensions/tut_migration_to_manifest_v2

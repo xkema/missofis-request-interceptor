@@ -31,7 +31,7 @@
 
 /* content styles */
 #ntrcptr-wrapper {
-  min-width: 270px;
+  min-width: 300px;
 }
 
 #ntrcptr-form {
@@ -51,11 +51,15 @@
 
 /* content styles */
 #ntrcptr-options-wrapper {
-  min-width: 270px;
+  min-width: 300px;
 }
 
 #ntrcptr-options-form {
   display: none;
+}
+
+.ntrcptr-textarea-wider {
+  min-width: 720px;
 }
 
 #ntrcptr-options-form-errors {

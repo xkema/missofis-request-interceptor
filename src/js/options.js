@@ -12,8 +12,9 @@ let appState = {
 let formElem = document.getElementById('ntrcptr-options-form'),
     formSubmitElem = document.getElementById('ntrcptr-options-submit-button'),
     formMessagesElem = document.getElementById('ntrcptr-options-form-errors'),
-    redirectsTxtElem = document.getElementById('txt-intercepted-redirects'),
-    hintersTxtElem = document.getElementById('txt-intercepted-images'),
+    txtRedirects = document.getElementById('txt-intercepted-redirects'),
+    txtHinters = document.getElementById('txt-intercepted-images'),
+    btnTxtSizeToggler = document.getElementById('ntrcptr-options-long-textareas'),
     formErrorElemId = 'error-save-redirects',
     formSuccessElemId = 'success-save-redirects',
     formErrorMessageMarkup = `
@@ -32,8 +33,8 @@ const optionsFormSubmitHandler = (e) => {
   e.preventDefault();
   formSubmitElem.classList.add('loading');
   // get parser responses
-  let parserResponseRedirects = Utils.parseRedirectUrls(redirectsTxtElem.value),
-      parserResponseImageHinters = Utils.parseImageHinters(hintersTxtElem.value);
+  let parserResponseRedirects = Utils.parseRedirectUrls(txtRedirects.value),
+      parserResponseImageHinters = Utils.parseImageHinters(txtHinters.value);
   // say something i'm giving up on you
   if(true === parserResponseRedirects || true === parserResponseImageHinters) {
     console.log('PARSER ERROR OCCURED :: SOME DETAILS MAYBE?', 'redirects:', parserResponseRedirects, 'image hinters:', parserResponseImageHinters);
@@ -41,9 +42,9 @@ const optionsFormSubmitHandler = (e) => {
   } else if('object' === typeof parserResponseRedirects || 'object' === typeof parserResponseImageHinters) {
     let optionsUpdated = {
       redirectsInterceptor: parserResponseRedirects,
-      redirectsInterceptorPlain: redirectsTxtElem.value,
+      redirectsInterceptorPlain: txtRedirects.value,
       redirectsImageHinters: parserResponseImageHinters,
-      redirectsImageHintersPlain: hintersTxtElem.value
+      redirectsImageHintersPlain: txtHinters.value
     };
     Utils.updateExtensionOptions(optionsUpdated, (updatedOptions) => {
       Utils.sendOptionsMessage(optionsUpdated);
@@ -58,12 +59,17 @@ const initOptionsPage = () => {
   Utils.readExtensionData(null, (items) => {
     Utils.updateLocalState(items, appState);
     // update options form with chrome sync data
-    redirectsTxtElem.value = appState.redirectsInterceptorPlain;
-    hintersTxtElem.value = appState.redirectsImageHintersPlain
+    txtRedirects.value = appState.redirectsInterceptorPlain;
+    txtHinters.value = appState.redirectsImageHintersPlain
     // show form after options is available
     formElem.style.display = 'block';
     // bind submit handlers to options form
     formElem.addEventListener('submit', optionsFormSubmitHandler);
+    // bind textarea sice toggler listeners
+    btnTxtSizeToggler.addEventListener('click', (e) => {
+      txtRedirects.classList.toggle('ntrcptr-textarea-wider');
+      txtHinters.classList.toggle('ntrcptr-textarea-wider');
+    });
   });
 };
 
