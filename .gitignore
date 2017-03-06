@@ -1,7 +1,7 @@
 # folders
-node_modules/
-dist/
-pack/
+node_modules
+dist
+!dist/*.zip
 
 # log files
 *.log
