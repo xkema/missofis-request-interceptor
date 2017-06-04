@@ -21,9 +21,9 @@ class Utils {
    */
   static updateExtensionOptions(items, optionsUpdatedCallback) {
     chrome.storage.sync.set(items, function() {
-      // console.log('OPTIONS UPDATED ::', items);
+      // console.log('OPTIONS UPDATED ::', 'items', optionsUpdatedCallback);
       if(typeof optionsUpdatedCallback !== 'undefined' && typeof optionsUpdatedCallback === 'function') {
-        optionsUpdatedCallback.call(items);
+        optionsUpdatedCallback.call(this, items);
       }
     });
   }

@@ -9,22 +9,30 @@ let appState = {
 };
 
 // get page elements, markups
-let formElem = document.getElementById('ntrcptr-options-form'),
-    formSubmitElem = document.getElementById('ntrcptr-options-submit-button'),
-    formMessagesElem = document.getElementById('ntrcptr-options-form-errors'),
-    txtRedirects = document.getElementById('txt-intercepted-redirects'),
-    txtHinters = document.getElementById('txt-intercepted-images'),
+let formElem          = document.getElementById('ntrcptr-options-form'),
+    formSubmitElem    = document.getElementById('ntrcptr-options-submit-button'),
+    formExportElem    = document.getElementById('ntrcptr-options-export'),
+    formImportElem    = document.getElementById('ntrcptr-options-import'),
+    formMessagesElem  = document.getElementById('ntrcptr-options-form-errors'),
+    txtRedirects      = document.getElementById('txt-intercepted-redirects'),
+    txtHinters        = document.getElementById('txt-intercepted-images'),
+    txtImportExport   = document.getElementById('txt-import-export'),
     btnTxtSizeToggler = document.getElementById('ntrcptr-options-long-textareas'),
-    formErrorElemId = 'error-save-redirects',
+    formErrorElemId   = 'error-save-redirects',
     formSuccessElemId = 'success-save-redirects',
     formErrorMessageMarkup = `
-      <div id="${formErrorElemId}">
-        <span class="label label-danger">malformed input, can\'t save this :(</span>
+      <div id="${formErrorElemId}" class="form-message">
+        <span class="label label-danger">malformed input, can\'t save/import this! <br /><span class="emoji-indicator">😱</span></span>
       </div>
     `,
     formSuccessMessageMarkup = `
-      <div id="${formSuccessElemId}">
-        <span class="label label-success">options updated :)</span>
+      <div id="${formSuccessElemId}" class="form-message">
+        <span class="label label-success">options updated! <br /><span class="emoji-indicator">😉</span></span>
+      </div>
+    `,
+    formImportMessageMarkup = `
+      <div id="${formSuccessElemId}" class="form-message">
+        <span class="label label-success">options imported! <br /><span class="emoji-indicator">😉</span></span>
       </div>
     `;
 
@@ -37,7 +45,7 @@ const optionsFormSubmitHandler = (e) => {
       parserResponseImageHinters = Utils.parseImageHinters(txtHinters.value);
   // say something i'm giving up on you
   if(true === parserResponseRedirects || true === parserResponseImageHinters) {
-    console.log('PARSER ERROR OCCURED :: SOME DETAILS MAYBE?', 'redirects:', parserResponseRedirects, 'image hinters:', parserResponseImageHinters);
+    // console.log('PARSER ERROR OCCURED :: SOME DETAILS MAYBE?', 'redirects:', parserResponseRedirects, 'image hinters:', parserResponseImageHinters);
     Utils.doSomeSillyUxStuffAfterFormSubmittingSmiley(formSubmitElem, formMessagesElem, formErrorMessageMarkup, formErrorElemId);
   } else if('object' === typeof parserResponseRedirects || 'object' === typeof parserResponseImageHinters) {
     let optionsUpdated = {
@@ -65,10 +73,37 @@ const initOptionsPage = () => {
     formElem.style.display = 'block';
     // bind submit handlers to options form
     formElem.addEventListener('submit', optionsFormSubmitHandler);
-    // bind textarea sice toggler listeners
+    // bind textarea size toggler listeners
     btnTxtSizeToggler.addEventListener('click', (e) => {
       txtRedirects.classList.toggle('ntrcptr-textarea-wider');
+      btnTxtSizeToggler.classList.toggle('status-wide');
       txtHinters.classList.toggle('ntrcptr-textarea-wider');
+    });
+    // bind export listener
+    formExportElem.addEventListener('click', (event) => {
+      Utils.readExtensionData(null, (items) => {
+        // trim unnecessary data
+        delete items.interceptorStatus;
+        delete items.placeholdersStatus;
+        txtImportExport.value = JSON.stringify(items);
+        txtImportExport.select();
+      });
+    });
+    // bind import listener
+    formImportElem.addEventListener('click', (event) => {
+      let optionsImported = null;
+      try {
+        optionsImported = JSON.parse(txtImportExport.value);
+        Utils.updateExtensionOptions(optionsImported, (importedOptions) => {
+          Utils.doSomeSillyUxStuffAfterFormSubmittingSmiley(formSubmitElem, formMessagesElem, formImportMessageMarkup, formSuccessElemId);
+          // update text inputs with updated data (updates only view not a state update)
+          txtRedirects.value = importedOptions.redirectsInterceptorPlain;
+          txtHinters.value = importedOptions.redirectsImageHintersPlain;
+        });
+      } catch(error) {
+        Utils.doSomeSillyUxStuffAfterFormSubmittingSmiley(formSubmitElem, formMessagesElem, formErrorMessageMarkup, formErrorElemId);
+        txtImportExport.select();
+      }
     });
   });
 };
