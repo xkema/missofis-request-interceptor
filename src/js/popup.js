@@ -8,9 +8,9 @@ let appState = {
 
 // get page elements
 let chkToggleInt = document.getElementById('chk-toggle-interceptor'),
-    chkUsePlh = document.getElementById('chk-use-placeholders'),
-    btnOpenOpt = document.getElementById('btn-open-options-page'),
-    frmInt = document.getElementById('ntrcptr-form');
+    chkUsePlh    = document.getElementById('chk-use-placeholders'),
+    btnOpenOpt   = document.getElementById('btn-open-options-page'),
+    frmInt       = document.getElementById('ntrcptr-form');
 
 // options page initializer
 const initPopupPage = () => {
@@ -21,7 +21,7 @@ const initPopupPage = () => {
     chkUsePlh.checked = appState.placeholdersStatus;
     // show form after popup data ready
     frmInt.style.display = 'block';
-  });  
+  });
 };
 
 // bind listener to toggle interceptor button

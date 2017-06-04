@@ -21,17 +21,24 @@
 
 /* header styles */
 #ntrcptr-header {
-  border-bottom: 3px double #f4f4f4;
+  background: #f3f4fb;
+  border-bottom: 1px solid #e3e3e3;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 }
 
 #ntrcptr-header h1 {
   font-size: 1.75rem;
   margin: 0;
+  font-weight: bold;
+  color: #555;
 }
 
 /* content styles */
 #ntrcptr-wrapper {
+  background-color: #fdfdfd;
   min-width: 300px;
+  padding: .75rem .75rem;
 }
 
 #ntrcptr-form {
@@ -40,7 +47,8 @@
 
 /* footer styles */
 #ntrcptr-footer {
-  background: #f4f4f4;
+  background: #f3f4fb;
+  border-top: 1px solid #e3e3e3;
 }
 
 /*
@@ -51,17 +59,91 @@
 
 /* content styles */
 #ntrcptr-options-wrapper {
-  min-width: 300px;
+  background-color: #fdfdfd;
+  min-width: 400px;
 }
 
 #ntrcptr-options-form {
+  display: none;
+  position: relative;
+  padding-bottom: 5rem;
+  padding-top: 1rem;
+}
+
+#ntrcptr-options-form .form-group {
+  margin-bottom: 2rem;
+}
+
+#ntrcptr-options-form .form-label {
+  font-weight: bold;
+}
+
+#ntrcptr-options-form-controls {
+  border-top: 1px solid #e3e3e3;
+  background: #f3f4fb;
+  position: fixed;
+  bottom: 0;
+  width: calc(100% - 2rem);
+  width: 100%;
+  left: 0;
+  padding: 1rem;
+  margin-bottom: 0 !important;
+}
+
+#ntrcptr-options-long-textareas.status-wide .text-wide {
+  display: none;
+}
+
+#ntrcptr-options-long-textareas.status-wide .text-narrow {
+  display: block;
+}
+
+#ntrcptr-options-long-textareas .text-narrow {
   display: none;
 }
 
 .ntrcptr-textarea-wider {
   min-width: 720px;
+  min-height: 200px;
+}
+
+.form-message {
+  text-align: center;
+  margin-bottom: 1px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.20);
+  font-weight: bold;
+  font-style: italic;
+}
+
+.form-message .emoji-indicator {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.form-message .label {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  width: 100%;
+  white-space: normal;
+}
+
+.form-message:first-child .label {
+   border-top-left-radius: 0;
+   border-top-right-radius: 0;
 }
 
 #ntrcptr-options-form-errors {
-  
+  width: 300px;
+  position: fixed;
+  left: 50%;
+  top: 0;
+  margin-left: -150px;
+}
+
+#txt-import-export {
+  background-color: #fffef4;
+  font-size: 10px;
+  font-family: monospace;
+  line-height: 1.2;
 }
