@@ -83,9 +83,10 @@ const initOptionsPage = () => {
     formExportElem.addEventListener('click', (event) => {
       Utils.readExtensionData(null, (items) => {
         // trim unnecessary data
-        delete items.interceptorStatus;
-        delete items.placeholdersStatus;
-        txtImportExport.value = JSON.stringify(items);
+        let itemsTrimmed = Object.assign({}, items);
+        delete itemsTrimmed.interceptorStatus;
+        delete itemsTrimmed.placeholdersStatus;
+        txtImportExport.value = JSON.stringify(itemsTrimmed);
         txtImportExport.select();
       });
     });
