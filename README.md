@@ -28,6 +28,10 @@ too many redirects?
 - [ ] change `<all_urls>` permission form onBeforeRequest handler
 - [x] add # comment support to redirect inputs form input
 
+## Will update to..
+
+Rewrite of [missofis-chrome-interceptor](https://github.com/xkema/missofis-chrome-interceptor) with native [WebExtensions APIs](https://developer.mozilla.org/en-US/Add-ons/WebExtensions) to support all major browsers. 😱
+
 ## Credits
 
 Extension uses [spectre.css](https://picturepan2.github.io/spectre/) framework for styling.
