@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "Missofis Network Request Interceptor",
+  "version": "0.1",
+  "description": "A browser extension to intercept network requests",
+  "icons": {
+    "48": "assets/img/icon-48.png"
+  },
+  "background": {
+    "scripts": ["core/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["core/content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "core/popup.html",
+    "default_title": "popup.html | Missofis Network Request Interceptor"
+  },
+  "options_ui": {
+    "page": "core/options.html"
+  }
+}

@@ -5,3 +5,4 @@ dist
 
 # log files
 *.log
+src/.DS_Store

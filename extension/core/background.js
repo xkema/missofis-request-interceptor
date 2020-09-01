@@ -1,0 +1,1 @@
+console.log(`%cdebug ::`, `color:green;font-weight:bold;`, 'background.js');
