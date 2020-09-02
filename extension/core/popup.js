@@ -1,9 +1,16 @@
-// --- context: "popup.html"
+/**
+ * @module
+ * context: "popup.html"
+ */
 
-console.log(`%cdebug ::`, `color:lime;font-weight:bold;`, 'popup.js');
+import {getNamespace} from './get-namespace.js';
+import {logger} from './logger.js';
 
-window.browser = window.msBrowser || window.browser || window.chrome;
+window.browser = getNamespace();
 
+logger('popup.js');
+
+//
 document.querySelector('a').addEventListener('click', (event) => {
   event.preventDefault();
 
