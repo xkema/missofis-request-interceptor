@@ -4,12 +4,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>popup.html</title>
+  <link rel="stylesheet" href="./normalize.css">
+  <link rel="stylesheet" href="./popup.css">
 </head>
 <body>
-  <h1>popup.html</h1>
-  <p>
-    <a href="#">options.html</a>
-  </p>
+  <header>
+    <h1 class="title">popup.html</h1>
+  </header>
+  <main>
+    <div class="control-panel">
+      <label>
+        Toggle Interceptor
+        <input type="checkbox">
+      </label>
+      <label>
+        Use Image Placeholders
+        <input type="checkbox">
+      </label>
+      <hr>
+      <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, deleniti?</p>
+    </div>
+  </main>
+  <footer>
+    <nav>
+      <a href="#" target="_blank">GitHub</a>
+      <a href="#" id="btn-open-options">Extension Options</a>
+    </nav>
+  </footer>
   <script type="module" src="./popup.js"></script>
 </body>
 </html>

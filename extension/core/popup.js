@@ -10,9 +10,14 @@ window.browser = getNamespace();
 
 logger('popup.js');
 
-//
-document.querySelector('a').addEventListener('click', (event) => {
+/**
+ * Opens extension options panel
+ * @param {Event} event Native click event
+ */
+const openOptions = (event) => {
   event.preventDefault();
-
   browser.runtime.openOptionsPage();
-});
+};
+
+// listen open potions button
+document.querySelector('#btn-open-options').addEventListener('click', openOptions);
