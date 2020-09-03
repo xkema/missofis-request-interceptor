@@ -4,8 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>options.html</title>
+  <link rel="stylesheet" href="./theme.css">
+  <link rel="stylesheet" href="./options.css">
 </head>
 <body>
-  <h1>options.html</h1>
+  <header>
+    <h1 class="title">options.html</h1>
+  </header>
+  <main>
+    <div class="options-panel">
+      <div class="option-group">
+        <label for="option-urls">Intercepted URLs (Internal Redirects, 307)</label>
+        <textarea name="" id="option-urls" placeholder="Intercepted URLs (Internal Redirects, 307)"></textarea>
+      </div>
+      <div class="option-group">
+        <label for="option-images">Images Block Matches</label>
+        <textarea name="" id="option-images" placeholder="Images Block Matches"></textarea>
+      </div>
+      <hr>
+      <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, deleniti?</p>
+    </div>
+  </main>
+  <footer>
+    <button>Save Options</button>
+  </footer>
+  <script type="module" src="./options.js"></script>
 </body>
 </html>
