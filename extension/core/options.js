@@ -3,25 +3,14 @@
  * context: "options.html"
  */
 
-// {
-//   "redirects": [
-//     {
-//       "from": "some.domain.com/from.js",
-//       "to": "localhost:3000/to.js",
-//       "enabled": true
-//     }
-//   ],
-//   "matches": [
-//     {
-//       "search": "some.cdn.com/images",
-//       "enabled": true
-//     }
-//   ]
-// }
-
 import {getNamespace} from './get-namespace.js';
+import {saveOptions} from './options-utils.js';
 import {logger} from './logger.js';
 
 window.browser = getNamespace();
 
 logger('options.js');
+
+// capture submit events from options form to save options
+const formOptions = document.querySelector('.form-options');
+formOptions.addEventListener('submit', saveOptions);

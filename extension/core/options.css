@@ -1,1 +1,15 @@
 /*! options page */
+
+.form-options {
+  
+}
+
+.form-options label {
+  background-color: aquamarine;  
+}
+
+.form-options textarea {
+  width: 100%;
+  min-height: 15rem;
+  font-size: 75%;
+}
