@@ -1,8 +1,9 @@
 /**
  * @module
- * context: "popup.html"
  */
 
+import {submitChangesOnPopupForm} from './popup-utils.js';
+import {getOptions} from './storage.js';
 import {logger} from './logger.js';
 
 logger('popup.js');
@@ -18,3 +19,18 @@ const openOptions = (event) => {
 
 // listen open potions button
 document.querySelector('#btn-open-options').addEventListener('click', openOptions);
+
+// set initial view status of the plugin and bind event listeners after initial settings
+// note: a toggler's name attribute and corresponding option names are shared
+(async () => {
+  try {
+    const formStatusTogglers = document.querySelectorAll('[name="redirectionsOn"], [name="matchesOn"]');
+    const options = await getOptions();
+    formStatusTogglers.forEach(toggler => {
+      options[toggler.name] === true ? toggler.setAttribute('checked', '') : toggler.removeAttribute('checked');
+      toggler.addEventListener('change', submitChangesOnPopupForm);
+    });
+  } catch(error) {
+    logger(error);
+  }
+})();

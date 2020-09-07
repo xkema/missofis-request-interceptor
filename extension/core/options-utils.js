@@ -2,6 +2,7 @@
  * @module
  */
 
+import {updateOptions} from './storage.js';
 import {logger} from './logger.js';
 
 logger('options-utils.js');
@@ -22,7 +23,7 @@ const getLines = (text) => {
  * @param {string} redirectionsRaw - Raw input from "redirections" input
  * @returns {array} An array of redirection objects with the form of {from: '', to: ''}
  */
-const categorizeRedirectionLines = (redirectionsRaw) => {
+const getCategorizedRedirectionLines = (redirectionsRaw) => {
   return getLines(redirectionsRaw)
     .map(line => {
       const lineTrimmed = line.trim();
@@ -59,7 +60,7 @@ const categorizeRedirectionLines = (redirectionsRaw) => {
  * @param {string} matchesRaw - Raw input from "matches" input
  * @returns {array} An array of matches object strings
  */
-const categorizeMatchLines = (matchesRaw) => {
+const getCategorizedMatchLines = (matchesRaw) => {
   return getLines(matchesRaw)
     .map(line => {
       const lineTrimmed = line.trim();
@@ -91,40 +92,68 @@ const categorizeMatchLines = (matchesRaw) => {
 /**
  * Collects option data from options form
  * @param {FormData} formData - FormData object created for the options form
- * @returns {object} Unprocessed form input texts with `*Raw` keys
+ * @returns {object} Unprocessed form input texts
  */
 const collectOptionsFormData = (formData) => {
   let rawOptionsFormData = {};
   for(const [name, value] of formData.entries()) {
-    rawOptionsFormData[`${name}Raw`] = value;
+    rawOptionsFormData[name] = value;
   }
   return rawOptionsFormData;
 };
 
 /**
- * Parses and saves options form data
- * @param {*} event 
+ * Validates options form
+ * @param {Object} optionsFormData - Processed options form data collected from form inputs
+ * @returns Detailed validation result object
  */
-const saveOptions = (event) => {
+const getValidationResult = (optionsFormData) => {
+  const malformedRedirectionLines = optionsFormData.redirectionLines.filter(redirection => 'malformed' === redirection.type);
+  const malformedMatchLines = optionsFormData.matchLines.filter(match => 'malformed' === match.type);
+  return {
+    numMalformedRedirectionLines: malformedRedirectionLines.length,
+    numMalformedMatchLines: malformedMatchLines.length,
+  };
+}
+
+/**
+ * Adds/removes validation status classes used for styling
+ * @param {object} validationResult - Validation result object
+ * @param {*} eventTarget - Options form element
+ */
+const updateOptionsFormElementValidationStatus = (validationResult, eventTarget) => {
+  if(validationResult.numMalformedRedirectionLines > 0) {
+    eventTarget.classList.add('has-invalid-redirection-lines');
+  } else {
+    eventTarget.classList.remove('has-invalid-redirection-lines');
+  }
+  if(validationResult.numMalformedMatchLines > 0) {
+    eventTarget.classList.add('has-invalid-match-lines');
+  } else {
+    eventTarget.classList.remove('has-invalid-match-lines');
+  }
+};
+
+/**
+ * Parses and filters options form data and updates storage
+ * @param {	SubmitEvent} event - Native JavaScript "submit" event
+ */
+const submitOptionsForm = (event) => {
   event.preventDefault();
   const rawOptionsFormData = collectOptionsFormData(new FormData(event.target));
-  const redirectionLines = categorizeRedirectionLines(rawOptionsFormData['redirectionsRaw']);
-  const matchLines = categorizeMatchLines(rawOptionsFormData['matchesRaw']);
+  const redirectionLines = getCategorizedRedirectionLines(rawOptionsFormData['redirectionsRaw']);
+  const matchLines = getCategorizedMatchLines(rawOptionsFormData['matchesRaw']);
   const optionsFormData = Object.assign({}, rawOptionsFormData, {redirectionLines, matchLines});
-  // const malformedRedirectionLines = optionsFormData.redirectionLines.filter(redirection => 'malformed' === redirection.type);
-  // const malformedMatchLines = optionsFormData.matchLines.filter(match => 'malformed' === match.type);
-  // if(malformedMatchLines.length > 0 || malformedRedirectionLines.length > 0) {
-    // logger(`There are "${malformedRedirectionLines.length + malformedMatchLines.length}" malformed lines in the forms. Would you like me to convert malformed inputs to comments and continue to save options?`);
-    // logger('malformedMatchLines', malformedMatchLines);
-    // logger('malformedRedirectionLines', malformedRedirectionLines);
-    // const c = 
-    // redirectionLines.map(redirection => redirection.type === 'malformed' ? `# (auto-corrected-line) ${redirection.line}` : redirection.line).join('\r\n');
-    // logger('corrected', c);    
-  // } else {
-  // }
-  logger('optionsFormData', optionsFormData);
+  // form validation
+  const validationResult = getValidationResult(optionsFormData); 
+  updateOptionsFormElementValidationStatus(validationResult, event.target);
+  if(validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines > 0) {
+    logger(`Can't save options, there are "${validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines}" malformed lines in the options form.`);
+  } else {
+    updateOptions(optionsFormData);
+  }
 };
 
 export {
-  saveOptions
+  submitOptionsForm
 };

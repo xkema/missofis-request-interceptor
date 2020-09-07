@@ -12,18 +12,16 @@
     <h1 class="title">popup.html</h1>
   </header>
   <main>
-    <div class="control-panel">
-      <label>
-        Toggle Interceptor
-        <input type="checkbox">
-      </label>
-      <label>
-        Use Image Placeholders
-        <input type="checkbox">
-      </label>
-      <hr>
-      <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, deleniti?</p>
-    </div>
+    <form class="form-popup">
+      <div class="option-group">
+        <label for="redirectionsOn">Toggle Interceptor</label>
+        <input type="checkbox" name="redirectionsOn" id="redirectionsOn">
+      </div>
+      <div class="option-group">
+        <label for="matchesOn">Use Image Placeholders</label>
+        <input type="checkbox" name="matchesOn" id="matchesOn">
+      </div>
+    </form>
   </main>
   <footer>
     <nav>

@@ -12,53 +12,21 @@
     <h1>options.html</h1>
   </header>
   <main>
+    <h3>options sum</h3>
+    <div style="border: 1px solid lightgray; padding: 1rem; max-height: 200px; overflow:scroll;">
+      <pre><code class="options-summary" style="font-size: 75%; white-space: break-spaces;"></code></pre>
+    </div>
     <form class="form-options">
       <div class="option-group">
-        <label>Intercepted URLs (Internal Redirections, 307)</label>
-        <textarea placeholder="Intercepted URLs (Internal Redirections, 307)" name="redirections">   
-                
-          localhost:3000/jwplayer.core.controls.js ssl.p.jwpcdn.com/player/v/8.17.1/jwplayer.core.controls.js
-          
-       ##### asdasd asdasdasd # asd  5     
-          # asdasdasdasd
-  zxc    ##1231      
-malformed__
-            bsd bsd
-  10      ## asdasd asd    
-    #asd 123
-          # asd asd
-      #     asdasd    asd  asd 
-
-  #localhost:300015/jwplayer.core.controls.js ssl.p.jwpcdn.com/player/v/8.17.1/jwplayer.core.controls.js
-            
-    17    
-asd</textarea>
+        <label for="redirectionsRaw">Intercepted URLs (Internal Redirections, 307)</label>
+        <textarea placeholder="Intercepted URLs (Internal Redirections, 307)" name="redirectionsRaw" id="redirectionsRaw"></textarea>
       </div>
       <div class="option-group">
-        <label>Images Block Matches</label>
-        <textarea placeholder="Images Block Matches" name="matches">
-
-
-
-    www.telegraph.co.uk/content
-
-        
-    localhost:3000/jwplayer.core.controls.js ssl.p.jwpcdn.com/player/v/8.17.1/jwplayer.core.controls.js
-          
-    ##### asdasd asdasdasd # asd  5     
-       # asdasdasdasd
-zxc    ##1231      
-malformed__
-         bsd bsd
-10      ## asdasd asd    
- #asd 123
-       # asd asd
-   #     asdasd    asd  asd 
-
-        </textarea>
+        <label for="matchesRaw">Images Block Matches</label>
+        <textarea placeholder="Images Block Matches" name="matchesRaw" id="matchesRaw"></textarea>
       </div>
       <div class="option-group">
-        <button>Save Options</button>
+        <button>Update Options</button>
       </div>
     </form>
 

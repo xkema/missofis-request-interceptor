@@ -5,11 +5,16 @@
 }
 
 .form-options label {
-  background-color: aquamarine;  
+  background-color: aquamarine;
 }
 
 .form-options textarea {
   width: 100%;
-  min-height: 15rem;
+  min-height: 10rem;
   font-size: 75%;
+}
+
+.has-invalid-redirection-lines textarea[name="redirectionsRaw"],
+.has-invalid-match-lines textarea[name="matchesRaw"] {
+  background-color: mistyrose;
 }
