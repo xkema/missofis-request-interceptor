@@ -7,10 +7,8 @@
  * @param {object} redirectonLines - Parsed lines from options form textareas
  * @returns {array}
  */
-const getRedirections = (redirectonLines) => {
-  return redirectonLines
-    .filter(redirection => redirection.type === 'redirection')
-    .map(redirection => ({ from: redirection.from, to: redirection.to }))
-};
+const getRedirections = (redirectonLines) => redirectonLines
+  .filter((redirection) => redirection.type === 'redirection')
+  .map((redirection) => ({ from: redirection.from, to: redirection.to }));
 
-export {getRedirections};
+export { getRedirections };

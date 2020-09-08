@@ -3,6 +3,9 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  globals: {
+    browser: 'readonly',
+  },
   extends: [
     'airbnb-base',
   ],
@@ -11,5 +14,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'import/extensions': 'off',
+    'import/prefer-default-export': 'off',
   },
 };

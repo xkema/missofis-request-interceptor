@@ -2,10 +2,10 @@
  * @module
  */
 
-import {updateOptions} from './storage.js';
-import {parseRedirectionsRaw} from './modules/parse-redirections-raw.js';
-import {parseMatchesRaw} from './modules/parse-matches-raw.js';
-import {logger} from './logger.js';
+import { updateOptions } from './storage.js';
+import { parseRedirectionsRaw } from './modules/parse-redirections-raw.js';
+import { parseMatchesRaw } from './modules/parse-matches-raw.js';
+import { logger } from './logger.js';
 
 /**
  * Collects option data from options form
@@ -13,8 +13,9 @@ import {logger} from './logger.js';
  * @returns {object} Unprocessed form input texts
  */
 const collectOptionsFormData = (formData) => {
-  let rawOptionsFormData = {};
-  for(const [name, value] of formData.entries()) {
+  const rawOptionsFormData = {};
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [name, value] of formData.entries()) {
     rawOptionsFormData[name] = value;
   }
   return rawOptionsFormData;
@@ -27,13 +28,13 @@ const collectOptionsFormData = (formData) => {
  * @returns Detailed validation result object
  */
 const getValidationResult = (redirectionLines, matchLines) => {
-  const malformedRedirectionLines = redirectionLines.filter(redirection => 'malformed' === redirection.type);
-  const malformedMatchLines = matchLines.filter(match => 'malformed' === match.type);
+  const malformedRedirectionLines = redirectionLines.filter((redirection) => redirection.type === 'malformed');
+  const malformedMatchLines = matchLines.filter((match) => match.type === 'malformed');
   return {
     numMalformedRedirectionLines: malformedRedirectionLines.length,
     numMalformedMatchLines: malformedMatchLines.length,
   };
-}
+};
 
 /**
  * Adds/removes validation status classes used for styling
@@ -41,12 +42,12 @@ const getValidationResult = (redirectionLines, matchLines) => {
  * @param {*} eventTarget - Options form element
  */
 const updateOptionsFormElementValidationStatus = (validationResult, eventTarget) => {
-  if(validationResult.numMalformedRedirectionLines > 0) {
+  if (validationResult.numMalformedRedirectionLines > 0) {
     eventTarget.classList.add('has-invalid-redirection-lines');
   } else {
     eventTarget.classList.remove('has-invalid-redirection-lines');
   }
-  if(validationResult.numMalformedMatchLines > 0) {
+  if (validationResult.numMalformedMatchLines > 0) {
     eventTarget.classList.add('has-invalid-match-lines');
   } else {
     eventTarget.classList.remove('has-invalid-match-lines');
@@ -60,21 +61,21 @@ const updateOptionsFormElementValidationStatus = (validationResult, eventTarget)
 const submitOptionsForm = (event) => {
   event.preventDefault();
   const rawOptionsFormData = collectOptionsFormData(new FormData(event.target));
-  const redirectionLines = parseRedirectionsRaw(rawOptionsFormData['redirectionsRaw']);
-  const matchLines = parseMatchesRaw(rawOptionsFormData['matchesRaw']);
+  const redirectionLines = parseRedirectionsRaw(rawOptionsFormData.redirectionsRaw);
+  const matchLines = parseMatchesRaw(rawOptionsFormData.matchesRaw);
   // form validation
   const validationResult = getValidationResult(redirectionLines, matchLines);
   updateOptionsFormElementValidationStatus(validationResult, event.target);
-  if(validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines > 0) {
+  if (validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines > 0) {
     logger(`Can't save options, there are "${validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines}" malformed lines in the options form.`);
   } else {
     updateOptions('sync', {
-      redirectionsRaw: rawOptionsFormData['redirectionsRaw'],
-      matchesRaw: rawOptionsFormData['matchesRaw']
+      redirectionsRaw: rawOptionsFormData.redirectionsRaw,
+      matchesRaw: rawOptionsFormData.matchesRaw,
     });
   }
 };
 
 export {
-  submitOptionsForm
+  submitOptionsForm,
 };

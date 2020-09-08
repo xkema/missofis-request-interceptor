@@ -8,12 +8,12 @@
  * @param {...*} messages Objects to be logged
  */
 const logger = (...messages) => {
+  // eslint-disable-next-line no-console
   console.log(
-    `%c extension_debugger `,
-    `border-width: 1px; border-style: solid; border-color: inherit;`,
-    ...(messages.length === 0 ? ['no-messages-passed-to-the-logger'] : messages)
+    '%c extension_debugger ',
+    'border-width: 1px; border-style: solid; border-color: inherit;',
+    ...(messages.length === 0 ? ['no-messages-passed-to-the-logger'] : messages),
   );
 };
 
-
-export {logger};
+export { logger };

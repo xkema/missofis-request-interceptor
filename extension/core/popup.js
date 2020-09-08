@@ -2,9 +2,9 @@
  * @module
  */
 
-import {submitChangesOnPopupForm} from './popup-utils.js';
-import {getOptions} from './storage.js';
-import {logger} from './logger.js';
+import { submitChangesOnPopupForm } from './popup-utils.js';
+import { getOptions } from './storage.js';
+import { logger } from './logger.js';
 
 /**
  * Opens extension options panel
@@ -24,11 +24,15 @@ document.querySelector('#btn-open-options').addEventListener('click', openOption
   try {
     const formStatusTogglers = document.querySelectorAll('[name="redirectionsOn"], [name="matchesOn"]');
     const options = await getOptions();
-    formStatusTogglers.forEach(toggler => {
-      options[toggler.name] === true ? toggler.setAttribute('checked', '') : toggler.removeAttribute('checked');
+    formStatusTogglers.forEach((toggler) => {
+      if (options[toggler.name] === true) {
+        toggler.setAttribute('checked', '');
+      } else {
+        toggler.removeAttribute('checked');
+      }
       toggler.addEventListener('change', submitChangesOnPopupForm);
     });
-  } catch(error) {
+  } catch (error) {
     logger(error);
   }
 })();

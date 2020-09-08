@@ -2,7 +2,7 @@
  * @module
  */
 
-import {logger} from './logger.js';
+import { logger } from './logger.js';
 
 /**
  * Fetches extension storage content from both local and sync storage areas
@@ -11,11 +11,13 @@ import {logger} from './logger.js';
  * @returns All "sync" storage content
  */
 const getOptions = async () => {
+  let options = {};
   try {
-    return Object.assign({}, await browser.storage.local.get(null), await browser.storage.sync.get(null));
-  } catch(error) {
+    options = { ...await browser.storage.local.get(null), ...await browser.storage.sync.get(null) };
+  } catch (error) {
     logger(error);
   }
+  return options;
 };
 
 /**
@@ -24,16 +26,17 @@ const getOptions = async () => {
  * @param {object} options - Options to be updated
  */
 const updateOptions = async (storageArea, options) => {
+  let result = {};
   try {
-    const result = await browser.storage[storageArea].set(options);
+    result = await browser.storage[storageArea].set(options);
     await browser.runtime.sendMessage({ type: 'options-updated', payload: options });
-    return result;
-  } catch(error) {
+  } catch (error) {
     logger(error);
   }
+  return result;
 };
 
 export {
   getOptions,
-  updateOptions
+  updateOptions,
 };

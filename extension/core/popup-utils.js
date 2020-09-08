@@ -2,8 +2,7 @@
  * @module
  */
 
-import {updateOptions} from './storage.js';
-import {logger} from './logger.js';
+import { updateOptions } from './storage.js';
 
 /**
  * Updates storage on popup checkbox changes
@@ -11,8 +10,8 @@ import {logger} from './logger.js';
  */
 const submitChangesOnPopupForm = (event) => {
   updateOptions('local', {
-    [event.target.name]: event.target.checked
+    [event.target.name]: event.target.checked,
   });
 };
 
-export {submitChangesOnPopupForm};
+export { submitChangesOnPopupForm };

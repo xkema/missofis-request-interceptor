@@ -2,7 +2,7 @@
  * @module
  */
 
-import { getOptions, updateOptions } from './storage.js';
+import { getOptions } from './storage.js';
 import { parseRedirectionsRaw } from './modules/parse-redirections-raw.js';
 import { parseMatchesRaw } from './modules/parse-matches-raw.js';
 import { getRedirections } from './modules/get-redirections.js';
@@ -25,7 +25,7 @@ const state = {
  * @param {object} options - Incoming options (partial or full) to be updated
  */
 const updateState = (options) => {
-  logger('state-update // previous state ::', Object.assign({}, state));
+  logger('state-update // previous state ::', { ...state });
   logger('state-update // changes ::', options);
   Object.assign(state, options);
   logger('state-update // new state ::', state);
@@ -39,12 +39,12 @@ const updateState = (options) => {
  */
 const extractStateDataFromOptions = (options) => {
   const extracts = {};
-  Object.keys(options).forEach(option => {
-    if(option === 'redirectionsRaw') {
-      extracts['redirections'] = getRedirections(parseRedirectionsRaw(options[option]));
-    } else if(option === 'matchesRaw') {
-      extracts['matches'] = getMatches(parseMatchesRaw(options.matchesRaw));
-    } else if(state.hasOwnProperty(option)) {
+  Object.keys(options).forEach((option) => {
+    if (option === 'redirectionsRaw') {
+      extracts.redirections = getRedirections(parseRedirectionsRaw(options[option]));
+    } else if (option === 'matchesRaw') {
+      extracts.matches = getMatches(parseMatchesRaw(options.matchesRaw));
+    } else if (Object.prototype.hasOwnProperty.call(state, option)) {
       extracts[option] = options[option];
     } else {
       logger(`Unknown or deprecated option key "${option}"!`);
@@ -54,7 +54,8 @@ const extractStateDataFromOptions = (options) => {
 };
 
 /**
- * Listens to internal extension messages categorized by "message.type". Message types are; "options-updated" for now.
+ * Listens to internal extension messages categorized by "message.type".
+ * Message types are; "options-updated" for now.
  * Note: Always return a promise to properly fullfill sender
  * @param {object} message - Message object from "sendMessage" runtime informers
  * @param {string} message - Message object from "sendMessage" runtime informers
