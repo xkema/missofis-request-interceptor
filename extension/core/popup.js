@@ -6,8 +6,6 @@ import {submitChangesOnPopupForm} from './popup-utils.js';
 import {getOptions} from './storage.js';
 import {logger} from './logger.js';
 
-logger('popup.js');
-
 /**
  * Opens extension options panel
  * @param {Event} event Native click event
