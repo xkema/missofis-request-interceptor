@@ -151,6 +151,7 @@ const submitOptionsForm = (event) => {
     logger(`Can't save options, there are "${validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines}" malformed lines in the options form.`);
   } else {
     updateOptions(optionsFormData);
+    logger(`Update options signal has sent!`);
   }
 };
 
