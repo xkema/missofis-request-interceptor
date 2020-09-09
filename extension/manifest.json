@@ -31,7 +31,7 @@
   ],
   "browser_action": {
     "default_popup": "core/views/popup.html",
-    "default_title": "popup.html | Missofis Network Request Interceptor"
+    "default_title": "Missofis Network Request Interceptor"
   },
   "options_ui": {
     "page": "core/views/options.html"

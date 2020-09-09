@@ -1,13 +1,56 @@
 /*! popup styles */
 
+header,
+footer {
+  padding: 1rem 1rem;
+}
+
+.title {
+  background-color: whitesmoke;
+}
+
+.title h1 {
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+main {
+  padding: 1rem 1rem;
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+}
+
 .option-group {
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
+}
+
+.option-group:first-child {
+  margin-bottom: 0.75rem;
 }
 
 .option-group label {
-  padding-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+  font-weight: 300;
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+footer {
+  background-color: whitesmoke;
+}
+
+footer nav {
+  font-size: 87.5%;
+  text-align: center;
+}
+
+footer nav a {
+  display: inline-block;
+  padding: 0 0.25rem;
+  text-decoration: none;
+  color: royalblue;
 }
 
 /* --- switches */
