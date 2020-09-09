@@ -4,22 +4,21 @@
   "version": "0.1",
   "permissions": [
     "storage",
-    "notifications",
     "webRequest",
     "webRequestBlocking",
     "http://*/*",
     "https://*/*"
   ],
+  "optional_permissions": [
+    "notifications"
+  ],
   "description": "A browser extension to intercept network requests",
-  "developer": {
-    "name": "Kemal Yılmaz",
-    "url": "https://xkema.github.io/about"
-  },
+  "author": "Kemal Yılmaz",
   "icons": {
     "48": "assets/img/icon-48.png"
   },
   "background": {
-    "page": "core/background.html"
+    "page": "core/views/background.html"
   },
   "content_scripts": [
     {
@@ -31,10 +30,10 @@
     }
   ],
   "browser_action": {
-    "default_popup": "core/popup.html",
+    "default_popup": "core/views/popup.html",
     "default_title": "popup.html | Missofis Network Request Interceptor"
   },
   "options_ui": {
-    "page": "core/options.html"
+    "page": "core/views/options.html"
   }
 }

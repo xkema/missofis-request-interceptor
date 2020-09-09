@@ -2,9 +2,9 @@
  * @module
  */
 
-import { submitChangesOnPopupForm } from './popup-utils.js';
-import { getOptions } from './storage.js';
-import { logger } from './logger.js';
+import { submitChangesOnPopupForm } from './modules/submit-changes-on-popup-form.js';
+import { getOptions } from './modules/storage.js';
+import { logger } from './modules/logger.js';
 
 /**
  * Opens extension options panel

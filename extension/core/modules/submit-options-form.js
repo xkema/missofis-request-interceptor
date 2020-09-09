@@ -3,8 +3,8 @@
  */
 
 import { updateOptions } from './storage.js';
-import { parseRedirectionsRaw } from './modules/parse-redirections-raw.js';
-import { parseMatchesRaw } from './modules/parse-matches-raw.js';
+import { parseRedirectionsRaw } from './parse-redirections-raw.js';
+import { parseMatchesRaw } from './parse-matches-raw.js';
 import { logger } from './logger.js';
 
 /**

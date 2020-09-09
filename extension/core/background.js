@@ -2,12 +2,12 @@
  * @module
  */
 
-import { getOptions } from './storage.js';
+import { getOptions } from './modules/storage.js';
 import { parseRedirectionsRaw } from './modules/parse-redirections-raw.js';
 import { parseMatchesRaw } from './modules/parse-matches-raw.js';
 import { getRedirections } from './modules/get-redirections.js';
 import { getMatches } from './modules/get-matches.js';
-import { logger } from './logger.js';
+import { logger } from './modules/logger.js';
 
 /**
  * Application state to keep up with runtime changes to options

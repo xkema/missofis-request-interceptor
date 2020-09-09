@@ -2,9 +2,9 @@
  * @module
  */
 
-import { submitOptionsForm } from './options-utils.js';
-import { getOptions } from './storage.js';
-import { logger } from './logger.js';
+import { submitOptionsForm } from './modules/submit-options-form.js';
+import { getOptions } from './modules/storage.js';
+import { logger } from './modules/logger.js';
 
 // capture submit events from options form to update options
 (async () => {
