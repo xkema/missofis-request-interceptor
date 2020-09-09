@@ -23,7 +23,33 @@ main {
 
 .option-group:last-child {
   margin-bottom: 0;
+}
+
+.option-group.submit {
   text-align: right;
+}
+
+.form-info .message {
+  font-size: 87.5%;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.form-info .message.error {
+  background-color: mistyrose;
+  border: 1px solid pink;
+}
+
+.form-info .message.success {
+  background-color: palegreen;
+  border: 1px solid yellowgreen;
+}
+
+.form-info .message.warning {
+  background-color: lemonchiffon;
+  border: 1px solid darkkhaki;
 }
 
 .option-group label {
@@ -35,7 +61,7 @@ main {
 .option-group textarea {
   display: block;
   width: 100%;
-  min-height: 9rem;
+  min-height: 7rem;
   font-size: 87.5%;
   padding: 0.5rem 0.75rem;
   line-height: 1.5;

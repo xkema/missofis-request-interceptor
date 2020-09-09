@@ -55,10 +55,26 @@ const updateOptionsFormElementValidationStatus = (validationResult, eventTarget)
 };
 
 /**
+ * Shows a form status message inside the predefined ".form-info" message container
+ * @param {string} type - Type of message container; "error", "success" or "warning".
+ * @param {string} message - Message to be displayed
+ */
+const showFromInfoMessage = (type = '', message = 'no-message') => {
+  const container = document.querySelector('.form-info');
+  const element = document.createElement('p');
+  element.classList.add('message', type);
+  element.textContent = message;
+  container.insertAdjacentElement('afterBegin', element);
+  window.setTimeout(() => {
+    element.remove();
+  }, 5000);
+};
+
+/**
  * Parses and filters options form data and updates storage
  * @param {SubmitEvent} event - Native JavaScript "submit" event
  */
-const submitOptionsForm = (event) => {
+const submitOptionsForm = async (event) => {
   event.preventDefault();
   const rawOptionsFormData = collectOptionsFormData(new FormData(event.target));
   const redirectionLines = parseRedirectionsRaw(rawOptionsFormData.redirectionsRaw);
@@ -68,11 +84,13 @@ const submitOptionsForm = (event) => {
   updateOptionsFormElementValidationStatus(validationResult, event.target);
   if (validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines > 0) {
     logger(`Can't save options, there are "${validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines}" malformed lines in the options form.`);
+    showFromInfoMessage('error', `There are "${validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines}" malformed lines in the options form.`);
   } else {
-    updateOptions('sync', {
+    await updateOptions('sync', {
       redirectionsRaw: rawOptionsFormData.redirectionsRaw,
       matchesRaw: rawOptionsFormData.matchesRaw,
     });
+    showFromInfoMessage('success', 'Form options updated!');
   }
 };
 

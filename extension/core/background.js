@@ -73,7 +73,7 @@ const messageListener = (message) => {
   return Promise.resolve(`An internal "${message.type}" message handled by the background script!`);
 };
 
-// Listen to runtime messages
+// listen to runtime messages
 browser.runtime.onMessage.addListener(messageListener);
 
 // set initial state from sync storage on extension load
