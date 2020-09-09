@@ -1,22 +1,61 @@
 /*! options page */
 
-.form-options {
-  
+header,
+footer {
+  padding: 1rem 1rem;
+  background-color: whitesmoke;
 }
 
-.form-options label {
-
+.title h1 {
+  white-space: nowrap;
+  font-size: 1rem;
 }
 
-.form-options textarea {
+main {
+  padding: 1rem 1rem;
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+}
+
+.option-group {
+  margin-bottom: 1rem;
+}
+
+.option-group:last-child {
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.option-group label {
+  display: block;
+  padding: 0.5rem 0;
+  font-weight: 500;
+}
+
+.option-group textarea {
+  display: block;
   width: 100%;
-  min-height: 10rem;
-  /* font-size: 75%; */
+  min-height: 9rem;
+  font-size: 87.5%;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.5;
 }
 
 .has-invalid-redirection-lines textarea[name="redirectionsRaw"],
 .has-invalid-match-lines textarea[name="matchesRaw"] {
   background-color: mistyrose;
+}
+
+footer nav {
+  font-size: 87.5%;
+  text-align: center;
+}
+
+footer nav a {
+  display: inline-block;
+  padding: 0 0.25rem;
+  text-decoration: none;
+  color: royalblue;
 }
 
 /* --- buttons */
@@ -38,7 +77,7 @@
   font-size: 1rem;
   text-align: center;
   outline: none;
-  transition: background-color 0.5s, transform 0.5s;
+  transition: background-color 0.5s, transform 0.25s;
 }
 
 .button:hover,

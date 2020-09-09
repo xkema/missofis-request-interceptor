@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>options.html</title>
+  <meta name="description" content="Options page for extension">
+  <title>Options | Missofis Network Request Interceptor</title>
   <link rel="stylesheet" href="./theme.css">
   <link rel="stylesheet" href="./options.css">
 </head>
 <body>
-  <header>
-    <h1>options.html</h1>
+  <header class="title">
+    <h1>Options</h1>
   </header>
   <main>
-    <h3>options sum</h3>
     <form class="form-options">
       <div class="option-group">
-        <label for="redirectionsRaw">Intercepted URLs (Internal Redirections, 307)</label>
-        <textarea placeholder="Intercepted URLs (Internal Redirections, 307)" name="redirectionsRaw" id="redirectionsRaw"></textarea>
+        <label for="redirectionsRaw">Redirections</label>
+        <textarea placeholder="Intercepted & Redirected URLs (Internal Redirections, 307)" name="redirectionsRaw" id="redirectionsRaw"></textarea>
       </div>
       <div class="option-group">
-        <label for="matchesRaw">Images Block Matches</label>
-        <textarea placeholder="Images Block Matches" name="matchesRaw" id="matchesRaw"></textarea>
+        <label for="matchesRaw">Matches</label>
+        <textarea placeholder="Intercepted & Blocked Image URLs" name="matchesRaw" id="matchesRaw"></textarea>
       </div>
       <div class="option-group">
         <button class="button">Update Options</button>
@@ -28,7 +28,9 @@
     </form>
   </main>
   <footer>
-    <p>footer</p>
+    <nav>
+      <a href="#" target="_blank">GitHub</a>
+    </nav>
   </footer>
   <script type="module" src="../../lib/browser-polyfill.min.js"></script>
   <script type="module" src="../options.js"></script>

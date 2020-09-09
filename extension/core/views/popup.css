@@ -3,9 +3,6 @@
 header,
 footer {
   padding: 1rem 1rem;
-}
-
-.title {
   background-color: whitesmoke;
 }
 
@@ -35,10 +32,6 @@ main {
   font-weight: 300;
   cursor: pointer;
   flex-grow: 1;
-}
-
-footer {
-  background-color: whitesmoke;
 }
 
 footer nav {
