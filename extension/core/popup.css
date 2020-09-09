@@ -55,7 +55,7 @@
 }
 
 .toggler:checked {
-  background-color: limegreen;
+  background-color: mediumblue;
 }
 
 .toggler:checked::after {
