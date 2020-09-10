@@ -65,9 +65,10 @@ const showFromInfoMessage = (type = '', message = 'no-message') => {
   element.classList.add('message', type);
   element.textContent = message;
   container.insertAdjacentElement('afterBegin', element);
-  window.setTimeout(() => {
+  const timerId = window.setTimeout(() => {
+    window.clearTimeout(timerId);
     element.remove();
-  }, 5000);
+  }, 3000);
 };
 
 /**

@@ -15,6 +15,7 @@ main {
   padding: 1rem 1rem;
   border-bottom: 1px solid lightgray;
   border-top: 1px solid lightgray;
+  position: relative;
 }
 
 .option-group {
@@ -29,12 +30,22 @@ main {
   text-align: right;
 }
 
+.form-info {
+  position: absolute;
+  top: 0;
+  left: 0.5rem;
+  right: 0.5rem;
+  filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.25));
+}
+
 .form-info .message {
   font-size: 87.5%;
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
   border-radius: 0.25rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   text-align: center;
+  opacity: 0.95;
 }
 
 .form-info .message.error {
@@ -69,7 +80,7 @@ main {
 
 .has-invalid-redirection-lines textarea[name="redirectionsRaw"],
 .has-invalid-match-lines textarea[name="matchesRaw"] {
-  background-color: mistyrose;
+  border-color: tomato;
 }
 
 footer nav {
