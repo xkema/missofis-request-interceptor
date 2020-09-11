@@ -88,15 +88,47 @@ browser.runtime.onMessage.addListener(messageListener);
 // Listen network requests to be intercepted
 // call after initial state update
 browser.webRequest.onBeforeRequest.addListener((details) => {
-  logger('webRequest.onBeforeRequest >', details.type, details.url);
-  // if(details.type === 'script') {
-  //   return {
-  //     cancel: true
-  //   };
-  // }
+  let imgURLRedirected = false;
+  if (state.redirectionsOn) {
+    const capturedRedirections = (
+      state.redirections.filter((redirection) => details.url.search(redirection.from) !== -1)
+    );
+    if (capturedRedirections.length > 0) {
+      if (capturedRedirections.length > 1) {
+        logger(`There are multiple redirections for current URL "${details.url}". First item will be used for redirection!`, 'Here are all the redirections available:', capturedRedirections);
+      }
+      logger('Redirection Info', `URL: "${details.url}"`, `From: "${capturedRedirections[0].from}"`, `To: ${capturedRedirections[0].to}"`);
+      if (details.type === 'image') {
+        imgURLRedirected = true;
+      }
+      return {
+        redirectUrl: details.url.replace(capturedRedirections[0].from, capturedRedirections[0].to),
+      };
+    }
+  }
+  if (state.matchesOn && !imgURLRedirected && details.type === 'image') {
+    const capturedMatches = state.matches.filter((match) => details.url.search(match.from) !== -1);
+    if (capturedMatches.length > 0) {
+      if (capturedMatches.length > 1) {
+        logger(`There are multiple matches for current URL "${details.url}". First item will be used for matching!`, 'Here are all the matches available:', capturedMatches);
+      }
+      logger('Match Info', `URL: "${details.url}"`, `From: "${capturedMatches[0].from}"`);
+      return {
+        cancel: true,
+      };
+    }
+  }
+  return {
+    cancel: false,
+  };
 }, {
   urls: [
     'http://*/*',
     'https://*/*',
+  ],
+  types: [
+    'script',
+    'image',
+    'stylesheet',
   ],
 }, ['blocking']);
