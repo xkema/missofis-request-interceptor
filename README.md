@@ -1,38 +1,22 @@
-# Missofis Chrome Interceptor
+# Missofis Request Interceptor
 
-Chrome extension to intercept network requests.
+Browser extension to intercept network requests.
 
 ## Development Environment
 
-`npm start` or `npm run start` starts development environment with `rm -rf dist/* && webpack --watch --colors --progress` command. See **package.json** and **webpack.config.js**.
-
-- Run `npm start` command
-- Webpack watch mode creates a **dist** folder which holds unpacked extension content on save
-- Add **dist** folder as an unpacked extension to Chrome  
+Load extension folder to as an unpacked extension to the browser.
 
 ## Others
 
 too many redirects?
 
-> avoid generic string matchers, ie. use `localhost:3000/path/to/scripts your-cdn.com/path/to/scripts` instead of `localhost:3000 your-cdn.com`  
+> avoid generic string matchers, ie. use `localhost:3000/path/to/scripts your-cdn.com/path/to/scripts` instead of `localhost:3000 your-cdn.com`
 
 ## Todo
 
 - [ ] add intercepted url's info
-- [ ] fix material design options page opening bug
-- [x] add long text input button
-- [x] icon attribution http://identicon.org/ Missofis Chrome Interceptor
-- [x] export options feature
-- [ ] https://developer.chrome.com/extensions/tut_migration_to_manifest_v2
-- [ ] adblocker checker
-- [ ] change `<all_urls>` permission form onBeforeRequest handler
-- [x] add # comment support to redirect inputs form input
 
-## Will update to..
-
-Rewrite of [missofis-chrome-interceptor](https://github.com/xkema/missofis-chrome-interceptor) with native [WebExtensions APIs](https://developer.mozilla.org/en-US/Add-ons/WebExtensions) to support all major browsers. 😱
-
-## Credits
+## Credits for Legacy Extension
 
 Extension uses [spectre.css](https://picturepan2.github.io/spectre/) framework for styling.
 

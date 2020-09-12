@@ -1,6 +1,6 @@
 # folders
 node_modules
-dist
+dist/*
 !dist/*.zip
 
 # log files

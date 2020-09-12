@@ -1,26 +1,20 @@
 {
-  "name": "missofis-chrome-interceptor",
-  "version": "1.0.0",
-  "description": "",
+  "name": "missofis-request-interceptor",
+  "version": "0.0.1",
+  "description": "A browser extension to intercept HTTP requests",
   "main": "background.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "linter": "eslint extension",
-    "start": "rm -rf dist/**/* dist/manifest.json && webpack --watch --colors --progress"
+    "linter:mozilla": "addons-linter ./extension"
   },
-  "author": "",
+  "author": "Kemal Yılmaz",
   "license": "ISC",
-  "dependencies": {
-    "spectre.css": "^0.1.32"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "babel-core": "^6.22.1",
-    "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.22.0",
-    "copy-webpack-plugin": "^4.0.1",
+    "addons-linter": "^2.1.0",
     "eslint": "^7.8.1",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "webpack": "^2.2.1"
+    "eslint-plugin-import": "^2.22.0"
   }
 }
