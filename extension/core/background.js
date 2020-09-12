@@ -54,6 +54,18 @@ const extractStateDataFromOptions = (options) => {
 };
 
 /**
+ * Updates popup badge text based on state changes
+ * Input parameters are "state" values not incoming state data
+ * @param {*} redirectionsOn - Current redirections status
+ * @param {*} matchesOn - Current matches status
+ */
+const updatePopupBadge = (redirectionsOn, matchesOn) => {
+  browser.browserAction.setBadgeText({
+    text: redirectionsOn === true || matchesOn === true ? 'on' : 'off',
+  });
+};
+
+/**
  * Listens to internal extension messages categorized by "message.type".
  * Message types are; "options-updated" for now.
  * Note: Always return a promise to properly fullfill sender
@@ -64,9 +76,12 @@ const extractStateDataFromOptions = (options) => {
 const messageListener = (message) => {
   logger(`incoming-message // ${message.type} ::`, message);
   switch (message.type) {
-    case 'options-updated':
-      updateState(extractStateDataFromOptions(message.payload));
+    case 'options-updated': {
+      const stateData = extractStateDataFromOptions(message.payload);
+      updateState(stateData);
+      updatePopupBadge(state.redirectionsOn, state.matchesOn);
       break;
+    }
     default:
       logger('Unknown "message.type", check sender message data!');
   }
@@ -79,7 +94,9 @@ browser.runtime.onMessage.addListener(messageListener);
 // set initial state from sync storage on extension load
 (async () => {
   try {
-    updateState(extractStateDataFromOptions(await getOptions()));
+    const stateData = extractStateDataFromOptions(await getOptions());
+    updateState(stateData);
+    updatePopupBadge(state.redirectionsOn, state.matchesOn);
   } catch (error) {
     logger(error);
   }
