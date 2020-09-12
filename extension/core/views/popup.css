@@ -2,12 +2,11 @@
 
 header,
 footer {
-  padding: 1rem 1rem;
-  background-color: whitesmoke;
+  padding: 1rem 1.5rem;
 }
 
 main {
-  padding: 1rem 1rem;
+  padding: 0 1.5rem;
   border-bottom: 1px solid lightgray;
   border-top: 1px solid lightgray;
 }
@@ -30,18 +29,20 @@ main {
 .option-group {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
 }
 
-.option-group:first-child {
-  margin-bottom: 0.75rem;
+.option-group:last-child {
+  border-bottom: none;
 }
 
 .option-group label {
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.5rem;
+  margin: 0.5rem 0;
   white-space: nowrap;
   font-weight: 300;
   cursor: pointer;
-  flex-grow: 1;
   font-size: 87.5%;
 }
 
