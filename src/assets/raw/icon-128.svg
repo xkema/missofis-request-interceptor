@@ -14,9 +14,9 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0 (4035a4f, 2020-05-01)"
-   inkscape:export-filename="/Users/office/Github/missofis-chrome-interceptor/extension/assets/img/icon-128.png"
-   inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96">
+   inkscape:export-filename="/Users/office/Github/missofis-chrome-interceptor/extension/assets/img/icon-16.png"
+   inkscape:export-xdpi="12"
+   inkscape:export-ydpi="12">
   <defs
      id="defs2">
     <marker
@@ -487,11 +487,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.4423458"
-     inkscape:cx="21.251586"
-     inkscape:cy="56.746701"
+     inkscape:zoom="5.6471366"
+     inkscape:cx="75.330298"
+     inkscape:cy="61.462335"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer2"
      inkscape:document-rotation="0"
      showgrid="true"
      units="px"
@@ -499,9 +499,9 @@
      inkscape:pagecheckerboard="false"
      inkscape:window-width="1920"
      inkscape:window-height="1035"
-     inkscape:window-x="1"
+     inkscape:window-x="0"
      inkscape:window-y="23"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:showpageshadow="false">
     <inkscape:grid
        empspacing="8"
@@ -556,14 +556,12 @@
      inkscape:label="back"
      style="display:inline">
     <rect
-       ry="16.933332"
        style="display:inline;fill:#ff1493;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke markers fill"
        id="rect1128-9"
        width="33.866669"
        height="33.866669"
        x="1.5186362e-07"
-       y="1.1578171e-06"
-       rx="16.933334" />
+       y="1.1578171e-06" />
   </g>
   <g
      style="display:inline"
@@ -572,7 +570,7 @@
      inkscape:label="forw">
     <g
        id="g1134"
-       transform="matrix(2.6666669,0,0,2.6666669,-9.4914767e-8,1.7638882)"
+       transform="scale(2.6666669)"
        style="display:inline;stroke-width:0.375">
       <path
          id="path1253"
