@@ -85,7 +85,7 @@ browser.runtime.onMessage.addListener(messageListener);
   }
 })();
 
-// Listen network requests to be intercepted
+// Listen requests to be intercepted
 // call after initial state update
 browser.webRequest.onBeforeRequest.addListener((details) => {
   let imgURLRedirected = false;

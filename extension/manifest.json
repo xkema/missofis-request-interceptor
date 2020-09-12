@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Missofis Network Request Interceptor",
+  "name": "Missofis Request Interceptor",
   "version": "0.1",
   "permissions": [
     "storage",
@@ -12,7 +12,7 @@
   "optional_permissions": [
     "notifications"
   ],
-  "description": "A browser extension to intercept network requests",
+  "description": "A browser extension to intercept HTTP requests",
   "author": "Kemal Yılmaz",
   "icons": {
     "48": "assets/img/icon-48.png"
@@ -31,7 +31,7 @@
   ],
   "browser_action": {
     "default_popup": "core/views/popup.html",
-    "default_title": "Missofis Network Request Interceptor"
+    "default_title": "Missofis Request Interceptor"
   },
   "options_ui": {
     "page": "core/views/options.html"

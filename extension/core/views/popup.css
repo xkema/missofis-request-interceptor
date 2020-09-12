@@ -6,15 +6,25 @@ footer {
   background-color: whitesmoke;
 }
 
-.title h1 {
-  white-space: nowrap;
-  font-size: 1rem;
-}
-
 main {
   padding: 1rem 1rem;
   border-bottom: 1px solid lightgray;
   border-top: 1px solid lightgray;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.title h1 {
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.title img {
+  display: block;
+  margin-right: 1rem;
 }
 
 .option-group {
@@ -32,11 +42,14 @@ main {
   font-weight: 300;
   cursor: pointer;
   flex-grow: 1;
+  font-size: 87.5%;
 }
 
 footer nav {
-  font-size: 87.5%;
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+  font-size: 75%;
 }
 
 footer nav a {
