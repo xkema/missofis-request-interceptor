@@ -11,7 +11,10 @@ const targetBrowsers = [
         name: 'Kemal Yılmaz',
         url: 'https://xkema.github.io/about'
       }
-    }
+    },
+    intercepted_resource_types: [
+      'imageset'
+    ]
   },
   {
     name: 'chrome',

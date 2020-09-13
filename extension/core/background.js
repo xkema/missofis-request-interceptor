@@ -8,6 +8,7 @@ import { parseMatchesRaw } from './modules/parse-matches-raw.js';
 import { getRedirections } from './modules/get-redirections.js';
 import { getMatches } from './modules/get-matches.js';
 import { logger } from './modules/logger.js';
+import { interceptedTypes } from './modules/intercepted-types.js';
 
 /**
  * Application state to keep up with runtime changes to options
@@ -123,7 +124,7 @@ browser.webRequest.onBeforeRequest.addListener((details) => {
       };
     }
   }
-  if (state.matchesOn && !imgURLRedirected && details.type === 'image') {
+  if (state.matchesOn && !imgURLRedirected && (details.type === 'image' || details.type === 'imageset')) {
     const capturedMatches = state.matches.filter((match) => details.url.search(match.from) !== -1);
     if (capturedMatches.length > 0) {
       if (capturedMatches.length > 1) {
@@ -143,9 +144,5 @@ browser.webRequest.onBeforeRequest.addListener((details) => {
     'http://*/*',
     'https://*/*',
   ],
-  types: [
-    'script',
-    'image',
-    'stylesheet',
-  ],
+  types: interceptedTypes,
 }, ['blocking']);

@@ -14,13 +14,13 @@ console.clear();
 const extensionDir = path.resolve(__dirname, '..', 'extension');
 const tempDir = path.resolve(__dirname, '..', 'dist/temp');
 
-console.log('\r\n--------------------\r\n');
+console.log('--------------------');
 
 // create initial extension directories for development
 targetBrowsers.forEach((targetBrowser) => {
   const browserDir = path.join(tempDir, targetBrowser.name);
   generateBrowserSpecificDirectories(extensionDir, browserDir, targetBrowser);
-  console.log('\r\n--------------------\r\n');
+  console.log('--------------------');
 });
 
 // watch extension files and copy target on changes
