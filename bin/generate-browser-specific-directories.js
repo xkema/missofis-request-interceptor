@@ -13,7 +13,7 @@ const generateBrowserSpecificDirectories = (src, dest, targetBrowser) => {
       fs.mkdirSync(destFilePath, { recursive: true });
       generateBrowserSpecificDirectories(srcFilePath, destFilePath, targetBrowser);
     } else if(file.isFile()) {
-      const customization = customizeExtensionFile(file, targetBrowser);
+      const customization = customizeExtensionFile(file.name, targetBrowser);
       if(typeof customization === 'string') {
         fs.writeFileSync(destFilePath, customization);
         console.log(`copied with customization => "${srcFilePath}"`);
