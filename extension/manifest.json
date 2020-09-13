@@ -29,7 +29,9 @@
         "http://*/*",
         "https://*/*"
       ],
-      "js": ["core/content.js"]
+      "js": [
+        "core/content.js"
+      ]
     }
   ],
   "browser_action": {
