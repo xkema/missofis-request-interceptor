@@ -42,12 +42,12 @@ fs.watch(extensionDir, { recursive: true }, (eventType, filename) => {
         const customization = customizeExtensionFile(path.basename(filename), targetBrowser);
         if(typeof customization === 'string') {
           fs.writeFileSync(destFilePath, customization);
-          console.log(`copied with customization => "${srcFilePath}"`);
+          console.log(`copied with customization :: "${srcFilePath}" -> "${destFilePath}"`);
         } else if(customization === true) {
           fs.copyFileSync(srcFilePath, destFilePath);
-          console.log(`copied as is => "${srcFilePath}"`);
+          console.log(`copied as is :: "${srcFilePath}" -> "${destFilePath}"`);
         } else {
-          console.log(`skipped => "${srcFilePath}"`);
+          console.log(`skipped :: "${srcFilePath}" -> "${destFilePath}"`);
         }
       });
     }
