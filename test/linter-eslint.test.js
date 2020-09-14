@@ -1,7 +1,7 @@
 const { ESLint } = require("eslint");
 
 describe('linter-eslint.test.js', () => {
-  test('should pass linter tests for each file without any errors', async () => {
+  test('should pass eslint\'s lint tests for each file without any errors', async () => {
     const linter = new ESLint();
     const results = await linter.lintFiles('extension/**/*.js');
     let hasLinterPassed = false;

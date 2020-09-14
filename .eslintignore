@@ -1,4 +1,5 @@
 lib
 src
-dist
 bin
+dist/*
+!dist/temp
