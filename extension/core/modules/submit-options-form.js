@@ -87,7 +87,7 @@ const submitOptionsForm = async (event) => {
     logger(`Can't save options, there are "${validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines}" malformed lines in the options form.`);
     showFromInfoMessage('error', `There are "${validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines}" malformed lines in the options form.`);
   } else {
-    await updateOptions('sync', {
+    await updateOptions({
       redirectionsRaw: rawOptionsFormData.redirectionsRaw,
       matchesRaw: rawOptionsFormData.matchesRaw,
     });

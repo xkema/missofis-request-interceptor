@@ -9,7 +9,7 @@ import { updateOptions } from './storage.js';
  * @param {Event} event - Native JavaScript "change" event
  */
 const submitChangesOnPopupForm = (event) => {
-  updateOptions('local', {
+  updateOptions({
     [event.target.name]: event.target.checked,
   });
 };

@@ -93,7 +93,7 @@ const messageListener = (message) => {
 // listen to runtime messages
 browser.runtime.onMessage.addListener(messageListener);
 
-// set initial state from sync storage on extension load
+// set initial state from storage on extension load
 (async () => {
   try {
     const stateData = extractStateDataFromOptions(await getOptions());
