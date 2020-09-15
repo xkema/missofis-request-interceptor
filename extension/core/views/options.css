@@ -76,6 +76,9 @@ main {
   font-size: 87.5%;
   padding: 0.5rem 0.75rem;
   line-height: 1.5;
+  resize: vertical;
+  overflow: auto;
+  white-space: nowrap;
 }
 
 .has-invalid-redirection-lines textarea[name="redirectionsRaw"],
