@@ -1,12 +1,9 @@
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 const os = require('os');
 
-var deepExtend = require('deep-extend');
-
-const customizeInterceptedTypes = (filename, targetBrowser) => {
-  const srcFilePath = path.resolve(__dirname, '..', 'extension/core/modules', filename);
-  let fileContent = fs.readFileSync(srcFilePath, 'utf-8');
+module.exports = (src, targetBrowser) => {
+  let fileContent = fs.readFileSync(src, 'utf-8');
   if(Array.isArray(targetBrowser.intercepted_resource_types)) {
     let extendedTypesText = '';
     targetBrowser.intercepted_resource_types.forEach((extendedType, index, array) => {
@@ -21,5 +18,3 @@ const customizeInterceptedTypes = (filename, targetBrowser) => {
   }
   return fileContent;
 };
-
-module.exports = customizeInterceptedTypes;

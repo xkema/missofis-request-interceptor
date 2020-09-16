@@ -1,10 +1,10 @@
 # Missofis Request Interceptor
 
-Browser extension to intercept network requests.
+A browser extension to intercept network requests.
 
 ## Development Environment
 
-Load extension folder to as an unpacked extension to the browser.
+Load extension folder to browser as an unpacked extension to the browser.
 
 ## Others
 
