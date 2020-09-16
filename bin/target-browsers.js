@@ -1,4 +1,4 @@
-const targetBrowsers = [
+module.exports = [
   {
     name: 'firefox',
     manifest_keys: {
@@ -25,5 +25,3 @@ const targetBrowsers = [
     }
   }
 ];
-
-module.exports = targetBrowsers;
