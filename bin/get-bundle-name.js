@@ -1,5 +1,3 @@
-const path = require('path');
-
 /**
  * Generates a bundle name from name, browser and version strings
  * @param {string} name - Name string from package.json
