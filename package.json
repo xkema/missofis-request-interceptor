@@ -19,16 +19,14 @@
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",
     "addons-linter": "^2.1.0",
+    "chokidar": "^3.4.2",
     "deep-extend": "^0.6.0",
     "eslint": "^7.8.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "fs-extra": "^9.0.1",
-    "inquirer": "^7.3.3",
     "jest": "^26.4.2",
     "klaw": "^3.0.0",
-    "klaw-sync": "^6.0.0",
-    "web-ext": "^5.0.0",
     "zip-dir": "^1.0.2"
   }
 }

@@ -3,5 +3,5 @@ const fs = require('fs-extra');
 
 module.exports = (src, targetBrowser) => {
   const fileContent = fs.readJsonSync(src);
-  return deepExtend({}, fileContent, targetBrowser.manifest_keys)
+  return deepExtend({}, fileContent, targetBrowser.custom_manifest_keys)
 };
