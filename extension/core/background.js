@@ -110,7 +110,9 @@ browser.webRequest.onBeforeRequest.addListener((details) => {
   let imgURLRedirected = false;
   if (state.redirectionsOn) {
     const capturedRedirections = (
-      state.redirections.filter((redirection) => details.url.search(redirection.from) !== -1)
+      state.redirections.filter((redirection) => (
+        details.url.search(escapeRegexPattern(redirection.from)) !== -1
+      ))
     );
     if (capturedRedirections.length > 0) {
       if (capturedRedirections.length > 1) {
