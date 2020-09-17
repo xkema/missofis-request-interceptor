@@ -10,9 +10,9 @@ const copyExtensionFiles = require('./includes/copy-extension-files.js');
 const bundler = true;
 const targets = ['chrome', 'firefox'];
 
-console.log('~ bundler');
+console.log('~ bundler\n');
 
-// clear previous artifats
+// clear previous artifacts
 fs.removeSync('dist');
 
 // copy initial files

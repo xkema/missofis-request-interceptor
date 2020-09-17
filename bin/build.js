@@ -1,3 +1,4 @@
+const fs = require('fs-extra');
 const path = require('path');
 const chokidar = require('chokidar');
 const browsers = require('./includes/browsers.js');
@@ -8,7 +9,10 @@ const copyExtensionFile = require('./includes/copy-extension-file.js');
 const bundler = false;
 const targets = ['chrome', 'firefox'];
 
-console.log('~ builder');
+console.log('~ builder\n');
+
+// clear previous artifacts
+fs.removeSync('dist');
 
 // copy initial files
 targets.forEach((target) => {
