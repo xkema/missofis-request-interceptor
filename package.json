@@ -4,7 +4,8 @@
   "description": "A browser extension to intercept HTTP requests",
   "main": "background.js",
   "scripts": {
-    "start": "node bin/build.js",
+    "build": "node bin/build.js",
+    "bundle": "node bin/bundle.js",
     "test": "jest --watchAll",
     "linter": "eslint extension",
     "linter:chrome": "eslint dist/temp/chrome",

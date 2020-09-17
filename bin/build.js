@@ -4,15 +4,16 @@ const browsers = require('./includes/browsers.js');
 const copyExtensionFiles = require('./includes/copy-extension-files.js');
 const copyExtensionFile = require('./includes/copy-extension-file.js');
 
-// @todo make it a terminal parameter
+// @todo make these terminal parameters
+const bundler = false;
 const targets = ['chrome', 'firefox'];
 
-console.log('~');
+console.log('~ builder');
 
 // copy initial files
 targets.forEach((target) => {
   const browser = browsers.find(browser => browser.name === target);
-  copyExtensionFiles(path.resolve('extension'), browser);
+  copyExtensionFiles(path.resolve('extension'), browser, bundler);
 });
 
 // watch & copy changed files
