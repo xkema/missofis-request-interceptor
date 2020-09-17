@@ -1,7 +1,6 @@
 # folders
 node_modules
 dist/*
-!dist/*.zip
 
 # log files
 *.log

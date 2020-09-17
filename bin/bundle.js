@@ -1,8 +1,8 @@
+const fs = require('fs-extra');
 const path = require('path');
 const chokidar = require('chokidar');
 const browsers = require('./includes/browsers.js');
 const copyExtensionFiles = require('./includes/copy-extension-files.js');
-const copyExtensionFile = require('./includes/copy-extension-file.js');
 
 // @todo add units tests to the bundler
 
@@ -11,6 +11,9 @@ const bundler = true;
 const targets = ['chrome', 'firefox'];
 
 console.log('~ bundler');
+
+// clear previous artifats
+fs.removeSync('dist');
 
 // copy initial files
 targets.forEach((target) => {

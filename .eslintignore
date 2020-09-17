@@ -1,5 +1,3 @@
 lib
 src
 bin
-dist/*
-!dist/temp
