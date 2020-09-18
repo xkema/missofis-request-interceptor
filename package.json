@@ -6,13 +6,7 @@
   "scripts": {
     "build": "node bin/build.js",
     "bundle": "node bin/bundle.js",
-    "test": "jest --watchAll",
-    "linter": "eslint extension",
-    "linter:chrome": "eslint dist/chrome",
-    "linter:firefox": "eslint dist/firefox",
-    "linter:addons": "addons-linter extension",
-    "linter:addons:chrome": "addons-linter dist/chrome",
-    "linter:addons:firefox": "addons-linter dist/firefox"
+    "test": "jest --watchAll"
   },
   "author": "Kemal Yılmaz",
   "license": "ISC",

@@ -1,16 +1,7 @@
-const { ESLint } = require("eslint");
+const linterEslint = require('../bin/includes/linter-eslint.js');
 
 describe('linter-eslint.test.js', () => {
   test('should pass eslint\'s lint tests for each file without any errors', async () => {
-    const linter = new ESLint();
-    const results = await linter.lintFiles('extension/**/*.js');
-    let hasLinterPassed = false;
-    if (results.filter((result) => result.errorCount > 0).length === 0) {
-      hasLinterPassed = true;
-    } else {
-      const formatter = await linter.loadFormatter('stylish');
-      console.log(formatter.format(results));
-    }
-    expect(hasLinterPassed).toBe(true);
+    expect(await linterEslint('extension/**/*.js')).toBe(true);
   });
 });

@@ -1,11 +1,11 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-module.exports = (src, targetBrowser) => {
+module.exports = (src, browser) => {
   let fileContent = fs.readFileSync(src, 'utf-8');
-  if(Array.isArray(targetBrowser.custom_resource_types)) {
+  if(Array.isArray(browser.custom_resource_types)) {
     let extendedTypesText = '';
-    targetBrowser.custom_resource_types.forEach((extendedType, index, array) => {
+    browser.custom_resource_types.forEach((extendedType, index, array) => {
       extendedTypesText += `  '${extendedType}',`;
       if(index !== array.length-1) {
         extendedTypesText += '\n';
