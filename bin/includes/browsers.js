@@ -9,6 +9,9 @@ module.exports = [{
     developer: {
       name: 'Kemal Yılmaz',
       url: 'https://xkema.github.io/about'
+    },
+    options_ui: {
+      open_in_tab: true
     }
   },
   custom_resource_types: [

@@ -5,6 +5,8 @@ const browsers = require('./includes/browsers.js');
 const copyExtensionFiles = require('./includes/copy-extension-files.js');
 const copyExtensionFile = require('./includes/copy-extension-file.js');
 
+// @see Changes on bin directory files, i.e. a browser.js customization, requires node scripts to be reset
+
 // @todo make these terminal parameters
 const bundler = false;
 const targets = ['chrome', 'firefox'];
