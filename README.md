@@ -6,6 +6,8 @@ A browser extension to intercept network requests.
 
 Load extension folder to browser as an unpacked extension to the browser.
 
+`@todo` - update for windows environmnt 
+
 ## Others
 
 too many redirects?
