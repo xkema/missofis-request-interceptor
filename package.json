@@ -8,8 +8,8 @@
     "bundle": "node bin/bundle.js",
     "test": "jest --watchAll",
     "preversion": "jest --bail",
-    "version": "node bin/bundle.js",
-    "postversion": "git add package.json package-lock.json && git commit -m\"Updated to v$npm_package_version\" && node bin/includes/echo-version-info.js name=$npm_package_name version=$npm_package_version"
+    "version": "node bin/includes/update-manifest-version.js version=$npm_package_version && node bin/bundle.js",
+    "postversion": "git add package.json package-lock.json extension/manifest.json && git commit -m\"Updated to v$npm_package_version\" && node bin/includes/echo-version-info.js name=$npm_package_name version=$npm_package_version"
   },
   "author": "Kemal Yılmaz",
   "license": "ISC",

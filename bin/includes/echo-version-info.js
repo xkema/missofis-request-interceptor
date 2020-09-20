@@ -14,6 +14,7 @@ const info = `# You need to take some extra actions manually to finish version u
 You've just run ${chalk.green('npm version patch|minor|major')} on development branch, this did:
 
   - Update ${chalk.bold('package.json')} and ${chalk.bold('package-lock.json')} versions
+  - Update ${chalk.bold('manifest.json')} version
   - Run unit tests for ${chalk.bold('extension')} directory
   - Create bundle zip files and run bundle linters for ${chalk.bold('dist')} directory
   - Commit ${chalk.bold('package.json')} and ${chalk.bold('package-lock.json')} changes
@@ -30,7 +31,8 @@ You've just run ${chalk.green('npm version patch|minor|major')} on development b
 
 ${bundleList}
 
-5. Continue to do whatever you were doing before deployment :)`;
+5. Update all extension store items wit new bundle
+6. Continue to do whatever you were doing before deployment :)`;
 
 const output = boxen(info, {
   padding: 1,
