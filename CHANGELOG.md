@@ -9,6 +9,7 @@ These section logs incoming patches, features, bugfixes, ... to the new version.
 ### Added
 
 - Included this CHANGELOG.
+- Created extension [docs](docs/user.md "User Documentation") for users
 
 ## [1.0.1][] - 2020-09-20
 
@@ -18,7 +19,7 @@ These section logs incoming patches, features, bugfixes, ... to the new version.
 
 ### Fixed
 
-- Included [manifest.json](../extension/manifest.json) version update to npm version lifecycle scripts along with [package.json](../extension/package.json) and [package-lock.json](../extension/package-lock.json).
+- Included [manifest.json](extension/manifest.json "manifest.json") version update to npm version lifecycle scripts along with [package.json](package.json "package.json") and [package-lock.json](package-lock.json "package-lock.json").
 
 ## [1.0.0][] - 2020-09-20
 
