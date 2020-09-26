@@ -8,8 +8,9 @@ These section logs incoming patches, features, bugfixes, ... to the new version.
 
 ### Added
 
-- Included this CHANGELOG.
+- Added LICENSE (MIT)
 - Created extension [docs](docs/user.md "User Documentation") for users
+- Included this CHANGELOG.
 
 ## [1.0.1][] - 2020-09-20
 
