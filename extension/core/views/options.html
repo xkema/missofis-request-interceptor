@@ -32,11 +32,17 @@
         <h2>Options</h2>
         <form class="form-options">
           <div class="option-group">
-            <label for="redirectionsRaw">Redirections</label>
+            <label for="redirectionsRaw">
+              Redirections
+              <i>Each line is a redirection sentence formed as <span class="pill">to + space + from</span>, like <span class="pill">localhost:3000/my-script.js    example.com/my-script.js</span></i>
+            </label>
             <textarea placeholder="Intercepted & Redirected URLs (Internal Redirections, 307)" name="redirectionsRaw" id="redirectionsRaw"></textarea>
           </div>
           <div class="option-group">
-            <label for="matchesRaw">Matches</label>
+            <label for="matchesRaw">
+              Matches
+              <i>Each line is a match test case for incoming URLs, formed as a single string without spaces, like <span class="pill">cdn.example.com/assets/images</span></i>
+            </label>
             <textarea placeholder="Intercepted & Blocked Image URLs" name="matchesRaw" id="matchesRaw"></textarea>
           </div>
           <div class="option-group submit">

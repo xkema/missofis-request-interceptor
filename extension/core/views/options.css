@@ -117,6 +117,7 @@ span.pill {
   padding: 0 var(--half-gap);
   border-radius: var(--half-gap);
   font-size: 75%;
+  white-space: pre-wrap;
 }
 
 /* -- options tab */
@@ -166,6 +167,15 @@ span.pill {
   display: block;
   padding: 0.5rem 0;
   font-weight: 500;
+}
+
+.option-group label > i {
+  margin-top: var(--half-gap);
+  display: block;
+  font-weight: normal;
+  color: dimgray;
+  font-size: 87.5%;
+  font-style: normal;
 }
 
 .option-group textarea {
