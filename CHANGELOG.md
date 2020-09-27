@@ -15,6 +15,10 @@ These section logs incoming patches, features, bugfixes, ... to the new version.
 - Created extension [docs](docs/user.md "User Documentation") for users
 - Included this CHANGELOG.
 
+### Fixed
+
+- Popup switch incorrect label
+
 ## [1.0.1][] - 2020-09-20
 
 ### Added
