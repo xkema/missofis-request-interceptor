@@ -1,22 +1,125 @@
 /*! options page */
 
-header,
-footer {
-  padding: 1rem 1rem;
-  background-color: whitesmoke;
+:root {
+  --gap: 1rem;
+  --half-gap: calc( var(--gap) / 2 );
+  --double-gap: calc( var(--gap) * 2 );
 }
 
-.title h1 {
-  white-space: nowrap;
-  font-size: 1rem;
+/* -- element styles */
+
+body {
+  display: grid;
+  gap: 0;
+  grid-template-areas:
+    "aside    main";
+  grid-template-columns: auto 1fr;
+}
+
+aside {
+  grid-area: aside;
+  background-color: whitesmoke;
+  border-right: 1px solid gainsboro;
 }
 
 main {
-  padding: 1rem 1rem;
-  border-bottom: 1px solid lightgray;
-  border-top: 1px solid lightgray;
-  position: relative;
+  grid-area: main;
 }
+
+/* -- layout styles */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  padding: var(--double-gap);
+}
+
+.sidebar h1 {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--double-gap);
+}
+
+.sidebar h1 > :first-child {
+  margin-right: var(--half-gap);
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar nav > a {
+  display: block;
+  position: relative;
+  padding: var(--half-gap) var(--gap);
+  border: 1px solid transparent;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  border-radius: var(--gap);
+}
+
+.sidebar nav > a.active {
+  background-color: white;
+  border: 1px solid gainsboro;
+}
+
+.tabs {
+  margin: 0;
+  padding: 0;
+}
+
+.tabs > li.tab {
+  list-style: none;
+  display: block;
+  min-height: 100vh;
+  padding: var(--double-gap);
+}
+
+.tab p {
+  margin-bottom: var(--gap);
+}
+
+.tab h2 {
+  padding-bottom: var(--half-gap);
+  border-bottom: 1px solid gainsboro;
+  margin-bottom: var(--double-gap);
+}
+
+.tab h3 {
+  margin: var(--double-gap) 0;
+}
+
+.tab ul {
+  margin-bottom: var(--gap);
+}
+
+.tab ul li {
+  margin-bottom: var(--half-gap);
+}
+
+.about-details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--half-gap);
+}
+
+.about-details > dd {
+  margin-left: var(--double-gap);
+}
+
+span.pill {
+  display: inline-block;
+  background-color: whitesmoke;
+  border: 1px solid gainsboro;
+  padding: 0 var(--half-gap);
+  border-radius: var(--half-gap);
+  font-size: 75%;
+}
+
+/* -- options tab */
 
 .option-group {
   margin-bottom: 1rem;
@@ -24,10 +127,6 @@ main {
 
 .option-group:last-child {
   margin-bottom: 0;
-}
-
-.option-group.submit {
-  text-align: right;
 }
 
 .form-info {
@@ -72,7 +171,8 @@ main {
 .option-group textarea {
   display: block;
   width: 100%;
-  min-height: 7rem;
+  height: 7rem;
+  min-height: 20vh;
   font-size: 87.5%;
   padding: 0.5rem 0.75rem;
   line-height: 1.5;
@@ -86,19 +186,7 @@ main {
   border-color: tomato;
 }
 
-footer nav {
-  font-size: 87.5%;
-  text-align: center;
-}
-
-footer nav a {
-  display: inline-block;
-  padding: 0 0.25rem;
-  text-decoration: none;
-  color: royalblue;
-}
-
-/* --- buttons */
+/* -- buttons */
 
 .button {
   appearance: none;
@@ -131,4 +219,15 @@ footer nav a {
 
 .button:active {
   transform: scale( 0.975 );
+}
+
+/* -- queries */
+
+@media (max-width: 768px) {
+  body {
+    grid-template-areas:
+    "aside"
+    "main";
+    grid-template-columns: auto;
+  }
 }

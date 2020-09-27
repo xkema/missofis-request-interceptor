@@ -9,32 +9,77 @@
   <link rel="stylesheet" href="./options.css">
 </head>
 <body>
-  <header class="title">
-    <h1>Options</h1>
-  </header>
-  <main>
-    <form class="form-options">
-      <div class="option-group">
-        <label for="redirectionsRaw">Redirections</label>
-        <textarea placeholder="Intercepted & Redirected URLs (Internal Redirections, 307)" name="redirectionsRaw" id="redirectionsRaw"></textarea>
-      </div>
-      <div class="option-group">
-        <label for="matchesRaw">Matches</label>
-        <textarea placeholder="Intercepted & Blocked Image URLs" name="matchesRaw" id="matchesRaw"></textarea>
-      </div>
-      <div class="option-group submit">
-        <button class="button">Update Options</button>
-      </div>
-    </form>
-    <div class="form-info">
-      <!-- <p class="message error success warning">message_content</p> -->
+  <aside>
+    <div class="sidebar">
+      <header>
+        <h1>
+          <img src="../../assets/img/icon-32.png" alt="Missofis Request Interceptor">
+          <span>Missofis <br>Request Interceptor</span>
+        </h1>
+        <nav>
+          <a href="#options" class="active">Options</a>
+          <a href="#about">About</a>
+        </nav>
+      </header>
     </div>
+  </aside>
+  <main>
+    <ul class="tabs">
+      <!--
+        -- OPTIONS
+      -->
+      <li class="tab" id="options">
+        <h2>Options</h2>
+        <form class="form-options">
+          <div class="option-group">
+            <label for="redirectionsRaw">Redirections</label>
+            <textarea placeholder="Intercepted & Redirected URLs (Internal Redirections, 307)" name="redirectionsRaw" id="redirectionsRaw"></textarea>
+          </div>
+          <div class="option-group">
+            <label for="matchesRaw">Matches</label>
+            <textarea placeholder="Intercepted & Blocked Image URLs" name="matchesRaw" id="matchesRaw"></textarea>
+          </div>
+          <div class="option-group submit">
+            <button class="button">Update Options</button>
+          </div>
+        </form>
+        <div class="form-info"><!-- <p class="message error success warning">message_content</p> --></div>
+      </li>
+      <!--
+        -- ABOUT
+      -->
+      <li class="tab" id="about">
+        <h2>About</h2>
+        <h3>Extension Details</h3>
+        <dl class="about-details">
+          <!-- auto-filled-content -->
+          <dt>GitHub Repository</dt>
+          <dd><a href="https://github.com/xkema/missofis-request-interceptor">https://github.com/xkema/missofis-request-interceptor</a></dd>
+          <dt>Issues</dt>
+          <dd><a href="https://github.com/xkema/missofis-request-interceptor/issues">https://github.com/xkema/missofis-request-interceptor/issues</a></dd>
+          <dt>Docs &amp; How to Use</dt>
+          <dd><a href="https://github.com/xkema/missofis-request-interceptor/blob/master/docs/user.md">https://github.com/xkema/missofis-request-interceptor/blob/master/docs/user.md</a></dd>
+          <dt>Changelog</dt>
+          <dd><a href="https://github.com/xkema/missofis-request-interceptor/blob/master/CHANGELOG.md">https://github.com/xkema/missofis-request-interceptor/blob/master/CHANGELOG.md</a></dd>
+        </dl>
+        <h3>Permission Justification</h3>
+        <p>This extension uses:</p>
+        <ul>
+          <li><span class="pill">storage</span> permission to keep interceptor on/off status and options persistent.</li>
+          <li><span class="pill">webRequest</span> permission to redirect or match outgoing HTTP requests.</li>
+          <li><span class="pill">webRequestBlocking</span> permission to block image requests with simple string matches.</li>
+          <li><span class="pill">http://*/*</span> and <span class="pill">https://*/*</span> host permissions to filter and redirect/block HTTP requests.</li>
+          <li><span class="pill">notifications</span> permission to inform users on updates, like configuration options' updates.</li>
+        </ul>
+        <h3>Other</h3>
+        <ul>
+          <li>This extension do not use <span class="pill">sync</span> storage area, so your extension data <u>will not be synced</u> across the browsers you logged into!</li>
+          <li>Other extensions' redirecting/blocking behaviour may conflict with this extension. (like ad/tracker blockers)</li>
+          <li>Never keep confidential data (like passwords) inside redirection or match URLs.</li>
+        </ul>
+      </li>
+    </ul>
   </main>
-  <footer>
-    <nav>
-      <a href="#" target="_blank">GitHub</a>
-    </nav>
-  </footer>
   <script type="module" src="../../lib/browser-polyfill.min.js"></script>
   <script type="module" src="../options.js"></script>
 </body>
