@@ -8,6 +8,7 @@ These section logs incoming patches, features, bugfixes, ... to the new version.
 
 ### Added
 
+- Added extension actions for "install", "update" and "uninstall" events
 - Added LICENSE (MIT)
 - Created extension [docs](docs/user.md "User Documentation") for users
 - Included this CHANGELOG.

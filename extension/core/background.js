@@ -10,6 +10,7 @@ import { getMatches } from './modules/get-matches.js';
 import { logger } from './modules/logger.js';
 import { interceptedTypes } from './modules/intercepted-types.js';
 import { escapeRegexPattern } from './modules/escape-regex-pattern.js';
+import { installUpdateController } from './modules/install-update-controller.js';
 
 /**
  * Application state to keep up with runtime changes to options
@@ -152,3 +153,7 @@ browser.webRequest.onBeforeRequest.addListener((details) => {
   ],
   types: interceptedTypes,
 }, ['blocking']);
+
+// handle first install, update and uninstall events
+browser.runtime.onInstalled.addListener(installUpdateController);
+browser.runtime.setUninstallURL('https://github.com/xkema/missofis-request-interceptor/issues');
