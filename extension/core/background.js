@@ -11,6 +11,7 @@ import { interceptedTypes } from './modules/intercepted-types.js';
 import { installUpdateController } from './modules/install-update-controller.js';
 import { logger } from './modules/logger.js';
 import { interceptorOnBeforeRequest } from './modules/interceptor-on-before-request.js';
+import { interceptorHeadersReceived } from './modules/interceptor-on-headers-received.js';
 
 /**
  * Application state to keep up with runtime changes to options
@@ -21,6 +22,7 @@ const state = {
   redirections: [],
   matches: [],
   debugModeOn: false,
+  removeCspOn: false,
 };
 
 /**
@@ -120,6 +122,20 @@ browser.webRequest.onBeforeRequest.addListener((details) => (
   ],
   types: interceptedTypes,
 }, ['blocking']);
+
+// csp headers removal interceptor
+browser.webRequest.onHeadersReceived.addListener((details) => (
+  interceptorHeadersReceived(details, state)
+), {
+  urls: [
+    'http://*/*',
+    'https://*/*',
+  ],
+  types: ['main_frame'],
+}, [
+  'blocking',
+  'responseHeaders',
+]);
 
 // handle first install, update and uninstall events
 browser.runtime.onInstalled.addListener(installUpdateController);

@@ -26,8 +26,7 @@ fillAboutPageDetails(browser.runtime.getManifest());
     formOptions.elements.redirectionsRaw.value = options.redirectionsRaw || '';
     formOptions.elements.matchesRaw.value = options.matchesRaw || '';
     formOptions.addEventListener('submit', submitOptionsForm);
-    // formOptions.elements.debugModeOn.checked = options.debugModeOn;
-    const formTogglers = document.querySelectorAll('[name="debugModeOn"]');
+    const formTogglers = document.querySelectorAll('[name="debugModeOn"], [name="removeCspOn"]');
     formTogglers.forEach((toggler) => {
       if (options[toggler.name] === true) {
         toggler.setAttribute('checked', '');

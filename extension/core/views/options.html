@@ -46,6 +46,13 @@
             <textarea placeholder="Intercepted & Blocked Image URLs" name="matchesRaw" id="matchesRaw"></textarea>
           </div>
           <div class="option-group floated">
+            <label for="removeCspOn">
+              Remove CSP Headers
+              <i>Removes every Content-Security-Policy header from main_frame's response headers. Use it responsibly!</i>
+            </label>
+            <input type="checkbox" class="toggler" name="removeCspOn" id="removeCspOn">
+          </div>
+          <div class="option-group floated">
             <label for="debugModeOn">
               Debug Mode 
               <i>Toggles console logs</i>
