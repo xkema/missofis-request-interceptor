@@ -3,6 +3,7 @@
  */
 
 import { submitOptionsForm } from './modules/submit-options-form.js';
+import { submitChangesOnOptionsForm } from './modules/submit-changes-on-options-form.js';
 import { updateSidebarNavActiveLink } from './modules/update-sidebar-nav-active-link.js';
 import { getOptions } from './modules/storage.js';
 import { fillAboutPageDetails } from './modules/fill-about-page-details.js';
@@ -25,6 +26,16 @@ fillAboutPageDetails(browser.runtime.getManifest());
     formOptions.elements.redirectionsRaw.value = options.redirectionsRaw || '';
     formOptions.elements.matchesRaw.value = options.matchesRaw || '';
     formOptions.addEventListener('submit', submitOptionsForm);
+    // formOptions.elements.debugModeOn.checked = options.debugModeOn;
+    const formTogglers = document.querySelectorAll('[name="debugModeOn"]');
+    formTogglers.forEach((toggler) => {
+      if (options[toggler.name] === true) {
+        toggler.setAttribute('checked', '');
+      } else {
+        toggler.removeAttribute('checked');
+      }
+      toggler.addEventListener('change', submitChangesOnOptionsForm);
+    });
   } catch (error) {
     logger(error);
   }

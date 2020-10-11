@@ -8,6 +8,7 @@ These section logs incoming patches, features, bugfixes, ... to the new version.
 
 ### Added
 
+- Made logger module toggleable from options page
 - 'no-console' as an linter error
 - Corrected GitHub repo link on popup
 - Helper texts to options page textareas

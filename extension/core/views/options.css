@@ -191,6 +191,14 @@ span.pill {
   white-space: pre;
 }
 
+.option-group.floated {
+  float: left;
+}
+
+.option-group.floated + .option-group {
+  clear: both;
+}
+
 .has-invalid-redirection-lines textarea[name="redirectionsRaw"],
 .has-invalid-match-lines textarea[name="matchesRaw"] {
   border-color: tomato;

@@ -45,6 +45,13 @@
             </label>
             <textarea placeholder="Intercepted & Blocked Image URLs" name="matchesRaw" id="matchesRaw"></textarea>
           </div>
+          <div class="option-group floated">
+            <label for="debugModeOn">
+              Debug Mode 
+              <i>Toggles console logs</i>
+            </label>
+            <input type="checkbox" class="toggler" name="debugModeOn" id="debugModeOn">
+          </div>
           <div class="option-group submit">
             <button class="button">Update Options</button>
           </div>
@@ -79,7 +86,7 @@
         </ul>
         <h3>Other</h3>
         <ul>
-          <li>This extension do not use <span class="pill">sync</span> storage area, so your extension data <u>will not be synced</u> across the browsers you logged into!</li>
+          <li>This extension does not use <span class="pill">sync</span> storage area, so your extension data <u>will not be synced</u> across the browsers you logged into!</li>
           <li>Other extensions' redirecting/blocking behaviour may conflict with this extension. (like ad/tracker blockers)</li>
           <li>Never keep confidential data (like passwords) inside redirection or match URLs.</li>
         </ul>

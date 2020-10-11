@@ -7,10 +7,10 @@ import { parseRedirectionsRaw } from './modules/parse-redirections-raw.js';
 import { parseMatchesRaw } from './modules/parse-matches-raw.js';
 import { getRedirections } from './modules/get-redirections.js';
 import { getMatches } from './modules/get-matches.js';
-import { logger } from './modules/logger.js';
 import { interceptedTypes } from './modules/intercepted-types.js';
 import { escapeRegexPattern } from './modules/escape-regex-pattern.js';
 import { installUpdateController } from './modules/install-update-controller.js';
+import { logger } from './modules/logger.js';
 
 /**
  * Application state to keep up with runtime changes to options
@@ -20,6 +20,7 @@ const state = {
   matchesOn: false,
   redirections: [],
   matches: [],
+  debugModeOn: false,
 };
 
 /**
@@ -28,9 +29,10 @@ const state = {
  * @param {object} options - Incoming options (partial or full) to be updated
  */
 const updateState = (options) => {
-  logger('state-update // previous state ::', { ...state });
-  logger('state-update // changes ::', options);
+  const previousState = { ...state };
   Object.assign(state, options);
+  logger('state-update // previous state ::', previousState);
+  logger('state-update // changes ::', options);
   logger('state-update // new state ::', state);
 };
 
@@ -50,7 +52,7 @@ const extractStateDataFromOptions = (options) => {
     } else if (Object.prototype.hasOwnProperty.call(state, option)) {
       extracts[option] = options[option];
     } else {
-      logger(`Unknown or deprecated option key "${option}"!`);
+      logger(`Unknown or deprecated option key "${option}". Extension might need and update or reset!`);
     }
   });
   return extracts;
@@ -85,6 +87,9 @@ const messageListener = (message) => {
       updatePopupBadge(state.redirectionsOn, state.matchesOn);
       break;
     }
+    case 'logger':
+      logger(...message.payload);
+      break;
     default:
       logger('Unknown "message.type", check sender message data!');
   }
