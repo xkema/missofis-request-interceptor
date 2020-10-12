@@ -37,6 +37,14 @@ h6 {
   margin: 0;
 }
 
+/* --- utilities */
+
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
 /* --- switches */
 
 .toggler {

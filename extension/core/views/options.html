@@ -30,7 +30,7 @@
       -->
       <li class="tab" id="options">
         <h2>Options</h2>
-        <form class="form-options">
+        <form class="form-options clearfix">
           <div class="option-group">
             <label for="redirectionsRaw">
               Redirections
@@ -45,6 +45,10 @@
             </label>
             <textarea placeholder="Intercepted & Blocked Image URLs" name="matchesRaw" id="matchesRaw"></textarea>
           </div>
+          <div class="option-group submit">
+            <button class="button">Update Options</button> 
+            <span><i>Button updates Redirections &amp; Matches.</i></span>
+          </div>
           <div class="option-group floated">
             <label for="removeCspOn">
               Remove CSP Headers
@@ -55,12 +59,9 @@
           <div class="option-group floated">
             <label for="debugModeOn">
               Debug Mode 
-              <i>Toggles console logs</i>
+              <i>Toggles console logs.</i>
             </label>
             <input type="checkbox" class="toggler" name="debugModeOn" id="debugModeOn">
-          </div>
-          <div class="option-group submit">
-            <button class="button">Update Options</button>
           </div>
         </form>
         <div class="form-info"><!-- <p class="message error success warning">message_content</p> --></div>

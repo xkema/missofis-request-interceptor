@@ -4,6 +4,7 @@
   --gap: 1rem;
   --half-gap: calc( var(--gap) / 2 );
   --double-gap: calc( var(--gap) * 2 );
+  --separator: calc( var(--gap) * 10 );
 }
 
 /* -- element styles */
@@ -73,9 +74,21 @@ main {
 
 .tabs > li.tab {
   list-style: none;
+  position: relative;
   display: block;
   min-height: 100vh;
   padding: var(--double-gap);
+}
+
+.tabs > li.tab:nth-last-child(n+2)::after {
+  content: "\2193";
+  display: block;
+  font-size: 2rem;
+  font-weight: 200;
+  text-align: center;
+  color: darkgray;
+  margin-top: calc( var(--double-gap) * 2 );
+  padding: var(--separator);
 }
 
 .tab p {
@@ -169,7 +182,8 @@ span.pill {
   font-weight: 500;
 }
 
-.option-group label > i {
+.option-group label > i,
+.option-group.submit span > i {
   margin-top: var(--half-gap);
   display: block;
   font-weight: normal;
