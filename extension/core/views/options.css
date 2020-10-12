@@ -144,11 +144,11 @@ span.pill {
 }
 
 .form-info {
-  position: absolute;
-  top: 0;
-  left: 0.5rem;
-  right: 0.5rem;
+  position: fixed;
+  top: var(--gap);
+  right: var(--gap);
   filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.25));
+  min-width: 25vw;
 }
 
 .form-info .message {
@@ -158,6 +158,11 @@ span.pill {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   text-align: center;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.form-info .message.fly {
   opacity: 0.95;
 }
 

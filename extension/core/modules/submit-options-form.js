@@ -59,12 +59,17 @@ const updateOptionsFormElementValidationStatus = (validationResult, eventTarget)
  * @param {string} type - Type of message container; "error", "success" or "warning".
  * @param {string} message - Message to be displayed
  */
-const showFromInfoMessage = (type = '', message = 'no-message') => {
+const showFormInfoMessage = (type = '', message = 'no-message') => {
   const container = document.querySelector('.form-info');
   const element = document.createElement('p');
   element.classList.add('message', type);
   element.textContent = message;
   container.insertAdjacentElement('afterBegin', element);
+  // "no-use--${element.offsetTop" class is included to tigger a layout calculation
+  // before applying transition class "fly" to the element. This provides an initial state
+  // for the element before applying new state. See:
+  // {@link https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions#JavaScript_examples}
+  element.classList.add(`no-use-${element.offsetTop}`, 'fly');
   const timerId = window.setTimeout(() => {
     window.clearTimeout(timerId);
     element.remove();
@@ -85,13 +90,13 @@ const submitOptionsForm = async (event) => {
   updateOptionsFormElementValidationStatus(validationResult, event.target);
   if (validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines > 0) {
     logger(`Can't save options, there are "${validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines}" malformed lines in the options form.`);
-    showFromInfoMessage('error', `There are "${validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines}" malformed lines in the options form.`);
+    showFormInfoMessage('error', `There are "${validationResult.numMalformedRedirectionLines + validationResult.numMalformedMatchLines}" malformed lines in the options form.`);
   } else {
     await updateOptions({
       redirectionsRaw: rawOptionsFormData.redirectionsRaw,
       matchesRaw: rawOptionsFormData.matchesRaw,
     });
-    showFromInfoMessage('success', 'Form options updated!');
+    showFormInfoMessage('success', 'Form options updated!');
   }
 };
 
