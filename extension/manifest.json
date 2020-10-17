@@ -9,9 +9,6 @@
     "http://*/*",
     "https://*/*"
   ],
-  "optional_permissions": [
-    "notifications"
-  ],
   "description": "A browser extension to intercept HTTP requests",
   "author": "Kemal Yılmaz",
   "icons": {
