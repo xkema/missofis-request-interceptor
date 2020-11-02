@@ -6,6 +6,8 @@ Missofis Request Interceptor project history.
 
 These section logs incoming patches, features, bugfixes, ... to the new version.
 
+## [1.1.0][] - 2020-10-02
+
 ### Added
 
 - CSP Headers removal feature
@@ -50,7 +52,8 @@ These section logs incoming patches, features, bugfixes, ... to the new version.
 
 ---
 
-[unreleased]: https://github.com/xkema/missofis-request-interceptor/compare/v1.0.1...development
+[unreleased]: https://github.com/xkema/missofis-request-interceptor/compare/v1.1.0...development
+[1.1.0]: https://github.com/xkema/missofis-request-interceptor/compare/v1.0.0...v1.1.0
 [1.0.1]: https://github.com/xkema/missofis-request-interceptor/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/xkema/missofis-request-interceptor/compare/v0.0.1...v1.0.0
 [0.0.1]: https://github.com/xkema/missofis-request-interceptor/releases/tag/v0.0.1

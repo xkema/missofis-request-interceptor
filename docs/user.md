@@ -2,8 +2,8 @@
 
 User Documentation for Missofis Request Interceptor browser extension.
 
-@todo: Add Chrome Web Store Link
-@todo: Add Firefox Browser Add-Ons Store Link
+`@todo`: Add Chrome Web Store Link
+`@todo`: Add Firefox Browser Add-Ons Store Link
 
 ## Popup Switches
 
@@ -11,7 +11,7 @@ User Documentation for Missofis Request Interceptor browser extension.
 
 Popup Switches are independent. They do not affect each other unless the incoming URL is intercepted and redirected before image blocking. In that case, no image blocking will occur.
 
-Enabling one of them changes the popup button's status text from "off" to "on".
+Enabling one of them changes the popup button's status text from `off` to `on`.
 
 - [x] **Toggle Interceptor**: Toggles interceptor status. 
 - [x] **Use Image Placeholders**: Toggles image blocking for matching URLs.
@@ -20,7 +20,7 @@ Enabling one of them changes the popup button's status text from "off" to "on".
 
 ![Options Textareas](../src/assets/docs/options-textareas.jpg "Options Textareas")
 
-Use "Extension Options" link on the popup panel to open the options page. There are two text areas on the page. One is for redirections and the other one is for image blocking.
+Use "**Extension Options**" link on the popup panel to open the options page. There are two text areas on the page. One is for redirections and the other one is for image blocking.
 
 ### Redirections
 

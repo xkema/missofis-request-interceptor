@@ -19,8 +19,6 @@ const fillAboutPageDetails = (manifest) => {
     <dd>${manifest.author}</dd>
     <dt>Permissions</dt>
     <dd>${manifest.permissions.map((permission) => `<span class="pill">${permission}</span>`).join(' ')}</dd>
-    <dt>Optional Permissions</dt>
-    <dd>${manifest.optional_permissions.map((permission) => `<span class="pill">${permission}</span>`).join(' ')}</dd>
   `);
 };
 

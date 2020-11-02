@@ -7,16 +7,6 @@ const version = process.argv.slice(2)[1].split('=')[1];
 
 const bundleList = browsers.map(browser => `   - dist/${name}-${browser.name}-${version}.zip`).join('\n');
 
-const preinfo = `# Before the version update ${chalk.redBright('do not forget')} to:
-
----
-
-  - Update ${chalk.bold('GHANGELOG.md')}
-  - Update user docs ${chalk.bold('docs/user.md')}
-  - Update extension ${chalk.bold('Options Page')} textual content (if necessary)
-  
-If those updates are good to go, continue with the box below:`;
-
 const info = `# You need to take some extra actions manually to finish version update
 
 ---
@@ -44,18 +34,10 @@ ${bundleList}
 5. Update all extension store items with new bundles
 6. Continue to do whatever you were doing before deployment :)`;
 
-const preoutput = boxen(preinfo, {
-  borderStyle: 'double',
-  padding: 1,
-  dimBorder: true,
-  margin: { top: 1, bottom: 0 }
-});
-
 const output = boxen(info, {
   padding: 1,
   dimBorder: true,
-  margin: { top: 1, bottom: 1 }
+  margin: { top: 0, bottom: 1 }
 });
 
-console.log(preoutput);
 console.log(output);
